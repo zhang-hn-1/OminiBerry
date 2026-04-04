@@ -1,0 +1,1022 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "active_agents": [
+        "diagnosis_evidence_officer",
+        "differential_officer",
+        "berry_qa_expert",
+        "cultivation_management_officer"
+      ],
+      "layers": [
+        {
+          "layer": 1,
+          "layer_name": "hypothesis",
+          "agents": [
+            "diagnosis_evidence_officer",
+            "differential_officer"
+          ],
+          "parallelism": 2
+        },
+        {
+          "layer": 2,
+          "layer_name": "decision",
+          "agents": [
+            "berry_qa_expert",
+            "cultivation_management_officer"
+          ],
+          "parallelism": 2
+        }
+      ],
+      "expert_turns": [
+        {
+          "agent_name": "diagnosis_evidence_officer",
+          "role": "病理推理专家（单图假设构建者）",
+          "citations": [],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "ollama",
+            "model": "deepseek-r1:8b",
+            "latency_ms": 37985,
+            "request_id": "",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "visible_findings": [],
+          "negative_findings": [],
+          "candidate_causes": [
+            {
+              "name": "叶片浸泡性枯萎病（Phoma leaf blight）",
+              "why_like": "出现叶片边缘的棕色斑点，组织呈现出明显的坏死特征，这与该病害的典型表现一致。",
+              "why_unlike": "如果有其他类型的病害，如Alternaria alternata，可能也会导致类似的症状，但其斑点分布和病理特征有所不同。"
+            },
+            {
+              "name": "叶片腐烂病（Cercospora leaf blight）",
+              "why_like": "叶片边缘出现棕色斑点，并且组织状态为坏死，这与该病害的典型症状相符。",
+              "why_unlike": "如果有其他类型的菌丝，如Botrytis cinerea，可能会导致类似的腐烂，但其斑点形态和扩散模式不同。"
+            },
+            {
+              "name": "叶片黄化病（Yellow leaf curl disease）",
+              "why_like": "叶片边缘出现棕色斑点，并且叶片呈现出明显的卷曲，这与该病害的典型症状一致。",
+              "why_unlike": "如果有其他类型的病害，如Peronospora farinosa，可能会导致类似的黄化，但其斑点分布和病理特征不同。"
+            }
+          ],
+          "evidence_strength": "基于图像中的可见征象，候选病因假设具有较高的可能性，但仍需进一步确认以排除其他可能性。",
+          "top_k_causes": [
+            {
+              "name": "叶片浸泡性枯萎病（Phoma leaf blight）",
+              "why_like": "出现叶片边缘的棕色斑点，组织呈现出明显的坏死特征，这与该病害的典型表现一致。",
+              "why_unlike": "如果有其他类型的病害，如Alternaria alternata，可能也会导致类似的症状，但其斑点分布和病理特征有所不同。"
+            },
+            {
+              "name": "叶片腐烂病（Cercospora leaf blight）",
+              "why_like": "叶片边缘出现棕色斑点，并且组织状态为坏死，这与该病害的典型症状相符。",
+              "why_unlike": "如果有其他类型的菌丝，如Botrytis cinerea，可能会导致类似的腐烂，但其斑点形态和扩散模式不同。"
+            },
+            {
+              "name": "叶片黄化病（Yellow leaf curl disease）",
+              "why_like": "叶片边缘出现棕色斑点，并且叶片呈现出明显的卷曲，这与该病害的典型症状一致。",
+              "why_unlike": "如果有其他类型的病害，如Peronospora farinosa，可能会导致类似的黄化，但其斑点分布和病理特征不同。"
+            }
+          ],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [],
+          "risks": [],
+          "questions_to_ask": [],
+          "confidence": 0.5,
+          "evidence_board": [
+            {
+              "diagnosis": "叶片浸泡性枯萎病（Phoma leaf blight）",
+              "supporting": [
+                "出现叶片边缘的棕色斑点，组织呈现出明显的坏死特征，这与该病害的典型表现一致。"
+              ],
+              "counter": [
+                "如果有其他类型的病害，如Alternaria alternata，可能也会导致类似的症状，但其斑点分布和病理特征有所不同。"
+              ],
+              "missing": [],
+              "sources": []
+            },
+            {
+              "diagnosis": "叶片腐烂病（Cercospora leaf blight）",
+              "supporting": [
+                "叶片边缘出现棕色斑点，并且组织状态为坏死，这与该病害的典型症状相符。"
+              ],
+              "counter": [
+                "如果有其他类型的菌丝，如Botrytis cinerea，可能会导致类似的腐烂，但其斑点形态和扩散模式不同。"
+              ],
+              "missing": [],
+              "sources": []
+            },
+            {
+              "diagnosis": "叶片黄化病（Yellow leaf curl disease）",
+              "supporting": [
+                "叶片边缘出现棕色斑点，并且叶片呈现出明显的卷曲，这与该病害的典型症状一致。"
+              ],
+              "counter": [
+                "如果有其他类型的病害，如Peronospora farinosa，可能会导致类似的黄化，但其斑点分布和病理特征不同。"
+              ],
+              "missing": [],
+              "sources": []
+            }
+          ]
+        },
+        {
+          "agent_name": "differential_officer",
+          "role": "鉴别排除专家（逻辑质检员）",
+          "citations": [],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "ollama",
+            "model": "deepseek-r1:8b",
+            "latency_ms": 83599,
+            "request_id": "",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "ranked_differentials": [
+            {
+              "name": "叶片枯萎病（Leaf Blight）",
+              "why_supported": "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。",
+              "why_not_primary": "虽然枯萎病符合当前症状，但缺乏其他关键证据，如霉菌培养或分光镜观察结果来确认病原体的存在。"
+            },
+            {
+              "name": "叶片腐烂病（Leaf Rot）",
+              "why_supported": "腐烂病通常表现为叶片区域性的坏死，颜色变化为棕色或黑色，与当前病斑相符。病斑边界清晰且有黄色光泽，这也是腐烂病的典型特征之一。",
+              "why_not_primary": "腐烂病虽然符合部分症状，但通常不会出现明显的叶片边缘聚集模式，也不如枯萎病常见。"
+            },
+            {
+              "name": "锈菌病（Cercospora Leaf Spot）",
+              "why_supported": "锈菌病会在叶片上产生棕色斑点，且通常呈现出明显的圆形或椭圆形斑点，边界清晰。然而，在当前病例中，病斑主要集中在叶片边缘，这与锈菌病不符。",
+              "why_not_primary": "虽然锈菌病的症状有所不同，但其并非主要考虑对象。"
+            }
+          ],
+          "why_primary": [
+            "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。"
+          ],
+          "why_not_primary": [],
+          "decisive_missing_evidence": [
+            "霉菌培养结果未提供，无法确认是否为枯萎病或其他病原体。光照反光可能影响边界判断，导致对斑点分布的误判。"
+          ],
+          "top_k_causes": [
+            {
+              "name": "叶片枯萎病（Leaf Blight）",
+              "why_like": "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。",
+              "why_unlike": "虽然枯萎病符合当前症状，但缺乏其他关键证据，如霉菌培养或分光镜观察结果来确认病原体的存在。"
+            },
+            {
+              "name": "叶片腐烂病（Leaf Rot）",
+              "why_like": "腐烂病通常表现为叶片区域性的坏死，颜色变化为棕色或黑色，与当前病斑相符。病斑边界清晰且有黄色光泽，这也是腐烂病的典型特征之一。",
+              "why_unlike": "腐烂病虽然符合部分症状，但通常不会出现明显的叶片边缘聚集模式，也不如枯萎病常见。"
+            },
+            {
+              "name": "锈菌病（Cercospora Leaf Spot）",
+              "why_like": "锈菌病会在叶片上产生棕色斑点，且通常呈现出明显的圆形或椭圆形斑点，边界清晰。然而，在当前病例中，病斑主要集中在叶片边缘，这与锈菌病不符。",
+              "why_unlike": "虽然锈菌病的症状有所不同，但其并非主要考虑对象。"
+            }
+          ],
+          "supporting_evidence": [
+            "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。"
+          ],
+          "counter_evidence": [],
+          "actions": [],
+          "risks": [],
+          "questions_to_ask": [
+            "霉菌培养结果未提供，无法确认是否为枯萎病或其他病原体。光照反光可能影响边界判断，导致对斑点分布的误判。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": [
+            {
+              "diagnosis": "叶片枯萎病（Leaf Blight）",
+              "supporting": [
+                "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。",
+                "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。"
+              ],
+              "counter": [
+                "虽然枯萎病符合当前症状，但缺乏其他关键证据，如霉菌培养或分光镜观察结果来确认病原体的存在。"
+              ],
+              "missing": [
+                "霉菌培养结果未提供，无法确认是否为枯萎病或其他病原体。光照反光可能影响边界判断，导致对斑点分布的误判。"
+              ],
+              "sources": []
+            },
+            {
+              "diagnosis": "叶片腐烂病（Leaf Rot）",
+              "supporting": [
+                "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。",
+                "腐烂病通常表现为叶片区域性的坏死，颜色变化为棕色或黑色，与当前病斑相符。病斑边界清晰且有黄色光泽，这也是腐烂病的典型特征之一。"
+              ],
+              "counter": [
+                "腐烂病虽然符合部分症状，但通常不会出现明显的叶片边缘聚集模式，也不如枯萎病常见。"
+              ],
+              "missing": [
+                "霉菌培养结果未提供，无法确认是否为枯萎病或其他病原体。光照反光可能影响边界判断，导致对斑点分布的误判。"
+              ],
+              "sources": []
+            },
+            {
+              "diagnosis": "锈菌病（Cercospora Leaf Spot）",
+              "supporting": [
+                "病斑呈现出明显的棕色区域，且组织状态为坏死或nekrosis，这与枯萎病的典型症状相符。病斑分布在叶片边缘，形成聚集模式，这也是枯萎病的一大特征。",
+                "锈菌病会在叶片上产生棕色斑点，且通常呈现出明显的圆形或椭圆形斑点，边界清晰。然而，在当前病例中，病斑主要集中在叶片边缘，这与锈菌病不符。"
+              ],
+              "counter": [
+                "虽然锈菌病的症状有所不同，但其并非主要考虑对象。"
+              ],
+              "missing": [
+                "霉菌培养结果未提供，无法确认是否为枯萎病或其他病原体。光照反光可能影响边界判断，导致对斑点分布的误判。"
+              ],
+              "sources": []
+            }
+          ]
+        },
+        {
+          "agent_name": "berry_qa_expert",
+          "role": "草莓防治专家（防治方案制定者）",
+          "citations": [],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "ollama",
+            "model": "deepseek-r1:8b",
+            "latency_ms": 36859,
+            "request_id": "",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "today_actions": [
+            "隔离病叶，避免扩散。"
+          ],
+          "control_options": [
+            "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。"
+          ],
+          "observe_48h": [
+            "观察病叶是否继续扩展、颜色加深，及时处理。"
+          ],
+          "escalation_triggers": [
+            "病叶面积超过5%",
+            "病害加重导致植株衰弱",
+            "出现新发病斑或扩散情况"
+          ],
+          "key_evidence_gaps": [],
+          "top_k_causes": [],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [
+            "隔离病叶，避免扩散。",
+            "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。"
+          ],
+          "risks": [
+            "病叶面积超过5%",
+            "病害加重导致植株衰弱",
+            "出现新发病斑或扩散情况"
+          ],
+          "questions_to_ask": [
+            "观察病叶是否继续扩展、颜色加深，及时处理。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": []
+        },
+        {
+          "agent_name": "cultivation_management_officer",
+          "role": "农艺环境专家（环境管理师）",
+          "citations": [],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "ollama",
+            "model": "deepseek-r1:8b",
+            "latency_ms": 23268,
+            "request_id": "",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "management_timeline": [
+            "观察病斑发展情况，每天检查病叶是否扩散或新出现。"
+          ],
+          "low_risk_actions": [
+            "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。"
+          ],
+          "environment_adjustments": [
+            "优化通风环境，保持空气流动性，减少高湿度条件。",
+            "调整灌溉管理，避免叶片过度积水。"
+          ],
+          "followup_nodes": [
+            "复查病斑状态，记录是否有扩散或新出现的病斑。",
+            "收集更多环境数据，如温度、湿度和光照强度。",
+            "根据收集到的环境数据调整管理措施。"
+          ],
+          "top_k_causes": [],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [
+            "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。",
+            "优化通风环境，保持空气流动性，减少高湿度条件。",
+            "调整灌溉管理，避免叶片过度积水。"
+          ],
+          "risks": [],
+          "questions_to_ask": [
+            "复查病斑状态，记录是否有扩散或新出现的病斑。",
+            "收集更多环境数据，如温度、湿度和光照强度。",
+            "根据收集到的环境数据调整管理措施。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": []
+        }
+      ],
+      "summary": {
+        "consensus": [
+          "叶片枯萎病（Leaf Blight）是最可能的病害原因"
+        ],
+        "conflicts": [
+          "是否为光照反光影响边界判断的问题",
+          "是否需要进一步霉菌培养以确认病原体"
+        ],
+        "unique_points": [],
+        "next_focus": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [
+          "叶片枯萎病（Leaf Blight）"
+        ],
+        "open_questions": [
+          "是否为光照反光影响边界判断的问题",
+          "是否需要进一步霉菌培养以确认病原体"
+        ],
+        "evidence_gaps": [
+          "光照反光可能影响边界判断，导致对斑点分布的误判"
+        ],
+        "recommended_experts": [],
+        "uncertainty_score": 0.202874999999999,
+        "stop_signal": false,
+        "diagnosis_board": {
+          "working_diagnoses": [
+            "叶片枯萎病（Leaf Blight）"
+          ],
+          "supporting": [],
+          "counter": [],
+          "differentials": []
+        },
+        "evidence_board": {
+          "missing_evidence": [
+            "霉菌培养结果未提供",
+            "光照反光可能影响边界判断"
+          ],
+          "verification_value": []
+        },
+        "action_board": {
+          "today_actions": [
+            "隔离病叶，避免扩散。"
+          ],
+          "control_options": [
+            "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。"
+          ],
+          "observe_48h": [
+            "观察病叶是否继续扩展、颜色加深，及时处理。"
+          ],
+          "escalation_triggers": [],
+          "management_timeline": [],
+          "low_risk_actions": [],
+          "environment_adjustments": [],
+          "followup_nodes": []
+        },
+        "risk_board": {
+          "prohibited_actions": [],
+          "risk_flags": [],
+          "confidence_boundary": [],
+          "overtreatment_risks": [],
+          "undertreatment_risks": []
+        },
+        "diagnosis_evidence": [],
+        "action_focus": [],
+        "verification_tasks": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "uncertainty_triggers": [
+          "光照反光可能影响边界判断，导致对斑点分布的误判"
+        ],
+        "report_priority": [],
+        "evidence_sufficiency": ""
+      },
+      "shared_state": {
+        "consensus": [
+          "叶片枯萎病（Leaf Blight）是最可能的病害原因"
+        ],
+        "conflicts": [
+          "是否为光照反光影响边界判断的问题",
+          "是否需要进一步霉菌培养以确认病原体"
+        ],
+        "unique_points": [],
+        "next_focus": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [
+          "叶片枯萎病（Leaf Blight）"
+        ],
+        "open_questions": [
+          "是否为光照反光影响边界判断的问题",
+          "是否需要进一步霉菌培养以确认病原体"
+        ],
+        "evidence_gaps": [
+          "光照反光可能影响边界判断，导致对斑点分布的误判"
+        ],
+        "recommended_experts": [],
+        "uncertainty_score": 0.202874999999999,
+        "stop_signal": false,
+        "active_agents": [
+          "diagnosis_evidence_officer",
+          "differential_officer",
+          "berry_qa_expert",
+          "cultivation_management_officer"
+        ],
+        "proposed_actions": [
+          "隔离病叶，避免扩散。",
+          "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。",
+          "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。",
+          "优化通风环境，保持空气流动性，减少高湿度条件。",
+          "调整灌溉管理，避免叶片过度积水。"
+        ],
+        "evidence_board": {
+          "missing_evidence": [
+            "霉菌培养结果未提供",
+            "光照反光可能影响边界判断"
+          ],
+          "verification_value": []
+        },
+        "action_focus": [
+          "隔离病叶，避免扩散。",
+          "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。",
+          "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。",
+          "优化通风环境，保持空气流动性，减少高湿度条件。"
+        ],
+        "verification_tasks": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "uncertainty_triggers": [
+          "光照反光可能影响边界判断，导致对斑点分布的误判"
+        ],
+        "report_priority": [
+          "先写病例摘要，再写诊断判断与置信说明",
+          "复查与补证建议写清可执行动作，再展开救治路径",
+          "救治建议与实施路径前置，并突出风险边界、预后与复查",
+          "复查与补证建议前置，并降低结论措辞强度",
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "evidence_sufficiency": ""
+      }
+    }
+  ],
+  "final": {
+    "top_diagnosis": {
+      "name": "枯叶病",
+      "confidence": "较高（0.8225）"
+    },
+    "candidates": [
+      {
+        "name": "枯叶病",
+        "why_like": "症状符合枯叶病的典型特征：褐色斑点、坏死组织、同心轮纹样、边界清晰、黄色晕圈等。",
+        "why_unlike": ""
+      }
+    ],
+    "reject_flag": "",
+    "symptom_summary": [
+      "褐变",
+      "坏死",
+      "同心轮纹样",
+      "边界清楚",
+      "黄色晕圈",
+      "叶缘",
+      "簇状分布",
+      "卷曲"
+    ],
+    "visual_evidence": [],
+    "counter_evidence": [],
+    "differential_points": [],
+    "severity_risk": {
+      "level": "中等",
+      "spread_risk": "低至中等",
+      "pruning_guideline": "及时处理，防止扩散"
+    },
+    "evidence_to_collect": [],
+    "actions": [
+      "建议进行霉菌培养以确认病原体类型。",
+      "对受感染的植株进行定期监测，观察病情发展情况。",
+      "在灌溉过程中注意保持适宜的水分管理，避免过度浇水，以防止进一步的病斑扩散。"
+    ],
+    "evidence_board": [],
+    "rescue_plan": [],
+    "prohibited_actions": [],
+    "monitoring_plan": [
+      "每周至少检查一次植株的叶片状态。",
+      "记录观察到的症状变化和处理措施。",
+      "及时调整灌溉方案以适应病情发展，避免过度浇水。"
+    ],
+    "report_outline": [
+      "病例摘要",
+      "诊断判断与置信说明",
+      "复查与补证建议",
+      "救治建议与实施路径",
+      "风险边界",
+      "预后与复查"
+    ],
+    "evidence_sufficiency": "",
+    "confidence_statement": "",
+    "citations": [],
+    "safety_notes": [
+      "审查结果符合要求，没有发现过于激进或明显越权的动作。建议保持现有处理措施，并在必要时进行适当调整。"
+    ]
+  },
+  "safety": {
+    "safety_passed": true,
+    "flags": [],
+    "revised_actions": [],
+    "action_level": "",
+    "review_summary": "审查结果符合要求，没有发现过于激进或明显越权的动作。建议保持现有处理措施，并在必要时进行适当调整。",
+    "prohibited_actions": [],
+    "required_followups": [],
+    "evidence_sufficiency": ""
+  },
+  "shared_state": {
+    "consensus": [
+      "叶片枯萎病（Leaf Blight）是最可能的病害原因"
+    ],
+    "conflicts": [
+      "是否为光照反光影响边界判断的问题",
+      "是否需要进一步霉菌培养以确认病原体"
+    ],
+    "unique_points": [],
+    "next_focus": [
+      "请复核以下不确定信息：光照反光影响边界判断"
+    ],
+    "safety_flags": [],
+    "working_diagnoses": [
+      "叶片枯萎病（Leaf Blight）"
+    ],
+    "open_questions": [
+      "是否为光照反光影响边界判断的问题",
+      "是否需要进一步霉菌培养以确认病原体"
+    ],
+    "evidence_gaps": [
+      "光照反光可能影响边界判断，导致对斑点分布的误判"
+    ],
+    "recommended_experts": [],
+    "uncertainty_score": 0.202874999999999,
+    "stop_signal": false,
+    "active_agents": [
+      "diagnosis_evidence_officer",
+      "differential_officer",
+      "berry_qa_expert",
+      "cultivation_management_officer"
+    ],
+    "proposed_actions": [
+      "隔离病叶，避免扩散。",
+      "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。",
+      "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。",
+      "优化通风环境，保持空气流动性，减少高湿度条件。",
+      "调整灌溉管理，避免叶片过度积水。"
+    ],
+    "evidence_board": {
+      "missing_evidence": [
+        "霉菌培养结果未提供",
+        "光照反光可能影响边界判断"
+      ],
+      "verification_value": []
+    },
+    "action_focus": [
+      "隔离病叶，避免扩散。",
+      "若病害较重，可选择二次发酵处理或生物防治方法，如使用草莓白蜂等天敌进行防治。",
+      "对病株进行隔离，避免其与其他植物接触，以防止病害扩散。",
+      "优化通风环境，保持空气流动性，减少高湿度条件。"
+    ],
+    "verification_tasks": [
+      "请复核以下不确定信息：光照反光影响边界判断"
+    ],
+    "uncertainty_triggers": [
+      "光照反光可能影响边界判断，导致对斑点分布的误判"
+    ],
+    "report_priority": [
+      "先写病例摘要，再写诊断判断与置信说明",
+      "复查与补证建议写清可执行动作，再展开救治路径",
+      "救治建议与实施路径前置，并突出风险边界、预后与复查",
+      "复查与补证建议前置，并降低结论措辞强度",
+      "请复核以下不确定信息：光照反光影响边界判断"
+    ],
+    "evidence_sufficiency": "",
+    "diagnosis_board": {
+      "working_diagnoses": [],
+      "supporting": [],
+      "counter": [],
+      "differentials": []
+    },
+    "action_board": {
+      "today_actions": [],
+      "control_options": [],
+      "observe_48h": [],
+      "escalation_triggers": [],
+      "management_timeline": [],
+      "low_risk_actions": [],
+      "environment_adjustments": [],
+      "followup_nodes": []
+    },
+    "risk_board": {
+      "prohibited_actions": [],
+      "risk_flags": [],
+      "confidence_boundary": [],
+      "overtreatment_risks": [],
+      "undertreatment_risks": []
+    },
+    "diagnosis_evidence": []
+  },
+  "round_summary_meta": [
+    {
+      "provider": "ollama",
+      "model": "deepseek-r1:8b",
+      "latency_ms": 44023,
+      "request_id": "",
+      "is_real_output": true,
+      "used_fallback": false,
+      "round": 1
+    }
+  ],
+  "final_meta": {
+    "provider": "ollama",
+    "model": "deepseek-r1:8b",
+    "latency_ms": 37940,
+    "request_id": "",
+    "is_real_output": true,
+    "used_fallback": false
+  },
+  "safety_meta": {
+    "provider": "ollama",
+    "model": "deepseek-r1:8b",
+    "latency_ms": 9470,
+    "request_id": "",
+    "is_real_output": true,
+    "used_fallback": false
+  },
+  "execution_meta": {
+    "strict_real_output": false,
+    "fallback_used": false,
+    "rounds_executed": 1,
+    "planner": "layered_evidence_board_v2",
+    "max_parallel_agents_per_layer": 3,
+    "max_concurrency_per_route": 2,
+    "agent_model_routing": {
+      "diagnosis_evidence_officer": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "differential_officer": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "cultivation_management_officer": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "berry_qa_expert": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "coordinator_round_summary": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "coordinator_final": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "safety_reviewer": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "multi_agent_report_writer": {
+        "provider": "ollama",
+        "model": "deepseek-r1:8b",
+        "adapter_model": "",
+        "client_name": ""
+      },
+      "baseline_single_llm": {
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "openai"
+      }
+    }
+  },
+  "caption": {
+    "visual_summary": "BLIP识别到叶片病斑，主症状为颜色brown、组织状态necrosis，分布位置leaf_edge，模式clustered。",
+    "symptoms": {
+      "color": [
+        "褐变"
+      ],
+      "tissue_state": [
+        "坏死"
+      ],
+      "spot_shape": [
+        "同心轮纹"
+      ],
+      "boundary": [
+        "清晰",
+        "黄色晕圈"
+      ],
+      "distribution_position": [
+        "叶缘"
+      ],
+      "distribution_pattern": [
+        "簇状"
+      ],
+      "morph_change": [
+        "卷曲"
+      ],
+      "pest_cues": [
+        "无明显虫害线索"
+      ],
+      "co_signs": [
+        "湿度高",
+        "浇水过多"
+      ]
+    },
+    "numeric": {
+      "area_ratio": 0.12,
+      "severity_score": 0.534625
+    },
+    "confidence": 0.8225,
+    "ood_score": 0.25,
+    "followup_questions": [
+      "请复核以下不确定信息：光照反光影响边界判断"
+    ],
+    "evidence_refs": [
+      "image_evidence:pending"
+    ]
+  },
+  "decision_packet": {
+    "case_summary": {
+      "crop": "草莓",
+      "case_text": "",
+      "visual_summary": "BLIP识别到叶片病斑，主症状为颜色brown、组织状态necrosis，分布位置leaf_edge，模式clustered。",
+      "observed_symptoms": [
+        "褐变",
+        "坏死",
+        "同心轮纹样",
+        "边界清楚",
+        "黄色晕圈",
+        "叶缘",
+        "簇状分布",
+        "卷曲"
+      ],
+      "followup_questions": [
+        "请复核以下不确定信息：光照反光影响边界判断"
+      ]
+    },
+    "vision_conflict": {},
+    "diagnosis_summary": {
+      "primary_candidate": "",
+      "candidate_diagnoses": [],
+      "visual_candidates": [],
+      "uncertainty_score": 0.2029,
+      "statement_style": "可给出相对明确的判断，但仍需说明边界",
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。"
+    },
+    "missing_information": [
+      "霉菌培养结果未提供",
+      "光照反光可能影响边界判断"
+    ],
+    "recommended_actions": [],
+    "verification_tasks": [],
+    "safety_notes": [],
+    "report_priority": [],
+    "boards": {
+      "diagnosis_board": {},
+      "evidence_board": {
+        "missing_evidence": [
+          "霉菌培养结果未提供",
+          "光照反光可能影响边界判断"
+        ],
+        "verification_value": []
+      },
+      "action_board": {},
+      "risk_board": {}
+    }
+  },
+  "kb_evidence": [
+    {
+      "run_id": "run_20260330_014127_cab95b06",
+      "problem_name": "番茄叶片图像诊断报告",
+      "case_text": "",
+      "case_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "caption": {
+        "visual_summary": "当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。",
+        "symptoms": {
+          "color": [
+            "混合"
+          ],
+          "tissue_state": [
+            "坏死"
+          ],
+          "spot_shape": [
+            "不规则"
+          ],
+          "boundary": [
+            "清晰"
+          ],
+          "distribution_position": [
+            "叶缘"
+          ],
+          "distribution_pattern": [
+            "散在"
+          ],
+          "morph_change": [
+            "无明显变化"
+          ],
+          "pest_cues": [
+            "无明显虫害线索"
+          ],
+          "co_signs": [
+            "无法判断"
+          ]
+        },
+        "numeric": {
+          "area_ratio": 0.4450532724505327,
+          "severity_score": 0.6910856813192368
+        },
+        "confidence": 0.9214475750923157,
+        "ood_score": 0.07855242490768433,
+        "followup_questions": [
+          "请复核以下不确定信息：无法判断"
+        ],
+        "evidence_refs": [
+          "dinov3:predicted_class:Tomato___Late_blight",
+          "dinov3:primary_class:Tomato___Late_blight",
+          "dinov3:confidence:0.9214",
+          "dinov3:damaged_area_ratio_of_leaf:0.4451",
+          "qwen3vl:slot_extraction",
+          "qwen3vl:model:qwen3-vl-4B"
+        ]
+      },
+      "image_analysis_display": {
+        "摘要": "当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。",
+        "结论卡片": {
+          "综合判断": "晚疫病",
+          "综合判断来源": "分类头",
+          "分类结果": "晚疫病",
+          "分类置信度": "92.1%",
+          "分割用途": "仅用于受损面积估计",
+          "病损面积占叶片比例": "44.5%",
+          "叶片像素": 42705,
+          "病损像素": 19006,
+          "结果一致性": "病种与面积基本一致"
+        },
+        "一致性说明": "病种判断以分类结果为主，分割结果仅用于估计病斑面积和受损程度。",
+        "结果差异分析": {
+          "差异摘要": "分类病种判断与受损面积信息整体一致。",
+          "差异原因": [
+            "分类病种判断与受损面积信息未见明显矛盾。"
+          ],
+          "解释建议": "保持当前分类病种判断，同时持续跟踪病损面积变化。",
+          "索引说明": "分割头不参与病种判读，仅用于病损面积估计。"
+        },
+        "分类候选": [
+          {
+            "名称": "晚疫病",
+            "置信度": "92.1%"
+          },
+          {
+            "名称": "早疫病",
+            "置信度": "7.8%"
+          },
+          {
+            "名称": "白星病",
+            "置信度": "0.1%"
+          }
+        ],
+        "病斑面积明细": [
+          {
+            "区域": "病斑区域3",
+            "病损面积占叶片比例": "44.5%",
+            "病损像素": 19006,
+            "平均概率": "94.8%"
+          }
+        ]
+      },
+      "top_diagnosis": {
+        "name": "晚疫病",
+        "confidence": "低"
+      },
+      "candidates": [
+        {
+          "name": "晚疫病",
+          "why_like": "当前视觉病种判断仍以整体分类为主，对“晚疫病”有一定倾向，但证据仍需补齐。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        },
+        {
+          "name": "晚疫病",
+          "why_like": "分类模型中“晚疫病”呈现较高类别倾向（约 92.1%），仅作候选参考。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        }
+      ],
+      "actions": [
+        "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+        "仅对病株周围进行物理隔离，暂不进行预防性喷药。",
+        "优先执行证据收集步骤（如检查霉层、水浸状等），待确诊后再实施药剂处理。"
+      ],
+      "rescue_plan": [
+        {
+          "phase": "立即复核",
+          "objective": "先补充关键证据并确认结果冲突来源。",
+          "actions": [
+            "立即摘除并销毁病叶（带出田外深埋或烧毁），防止孢子扩散。",
+            "对病株周围 1 米范围内的健康叶片进行预防性喷药。",
+            "检查植株茎基部是否有褐色凹陷病斑，确认病害是否已侵入维管束。"
+          ],
+          "rationale": [
+            "当前存在结果冲突，先补证据比直接升级处理更稳妥。"
+          ],
+          "risk_level": "low"
+        },
+        {
+          "phase": "保守观察",
+          "objective": "在未确证前降低误治风险。",
+          "actions": [
+            "保持通风、隔离重症叶片，并持续复拍观察病斑变化。"
+          ],
+          "rationale": [
+            "证据不足时优先采用低风险、可逆的管理措施。"
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。",
+      "confidence_statement": "当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_outline": [
+        "病例摘要：可见征象与受害范围，不写确诊口径。",
+        "诊断判断与置信说明：首位疑似「晚疫病」、模型倾向、支持/鉴别与知识库摘要（若有）。",
+        "复查与补证建议：优先补什么、有何帮助、可怎么做。",
+        "救治建议与实施路径：分步动作、观察与升级条件（证据不足不写具体药剂配方）。",
+        "风险边界、预后与复查：禁忌、恶化信号与复查节点。"
+      ],
+      "report_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_excerpt": "# 农业救治报告\n\n## 病例摘要\n本节只归纳当前图像能直接支撑的事实：叶片可见的病斑形态、颜色与组织变化、分布位置以及模型给出的受害范围估计。这些材料用于描述「现场看到了什么」，并不等同于已完成病名确诊。在单张图像条件下，结论强度天然受限；后续章节会在补证前提下讨论排序与处置。读者应把本节理解为观察起点，而非治疗决策终点。\n\n## 诊断判断与置信说明\n**这种病田间一般特征** 番茄晚疫病病原为卵菌，在潮湿环境下极易通过气流或雨水传播。病斑多始于叶缘或叶尖，初期呈水浸状暗绿色，随后迅速扩大并转为褐色坏死。随着病情发展，病健交界处常出现清晰的界限，且叶片易受重力影响而萎蔫下垂。若田间环境持续高湿且通风不良，病斑表面极可能在叶背出现白色霉层，这是该病害极具诊断价值的微观特征。若病斑边缘呈现模糊的水渍状并向健康组织快速扩散，则进一步佐证了病原的侵染活性。**当前影像为何更像晚疫病** 依据图像分析，病损面积约占单叶 44.5%，且坏死区域主要分布于叶缘，这与晚疫病典型的侵染路径高度吻合。模型对“晚疫病”的类别倾向约为 92.1%，表明视觉特征与该病害的统计规律匹配度较高。尽管图像中未直接观察到白色霉层，但病斑形态的不规则性及坏死范围的广泛性，使其在现有证据链中权重最高。需明确的是，此分类分数仅代表照片特征更像哪一类，并不等同于田间病理确诊。**需与何病区分及补证方向** 鉴别诊断需重点关注早疫病与细菌性叶斑病，前者常具同心轮纹，后者多伴黄色晕圈或油渍状光泽。当前图像缺乏轮纹特征且未见明显黄色晕圈，故这两类病害的可能性相对较低。若叶背近景复查中未发现白色霉层或菌丝体，则“晚疫病”的排序可能需下调，转而考虑其他真菌性病害。若病斑周围出现明显黄色晕圈，则应优先考虑细菌性病害的可能性。**结论置信度说明** 当前诊断结论受限于单张图像的视角局限，证据强度属于倾向性判断而非绝对定论。视觉分类对“晚疫病”呈极强倾向，但结论仍受单张图像局限，建议以复查校准强度。后续处置需结合田间实际环境参数，若 48 小时内病斑外扩幅度小于 5% 且无新发病斑，可维持当前观察策略。若出现连续两次复查同向变化，则需调整排序与处置强度。\n\n## 复查与补证建议\n优先安排可复核动作：叶背近景、整株分布、同叶位时间序列，通常最能帮助区分相似选项。把每项补证写成「若观察到某结果，判断可如何前移或回调」，避免只罗列「尚缺」而不给路径。必要时再考虑镜检或送检，并与田间记录对齐。在材料受限时本节为系统兜底稿，请结合复查与专家意见替换为正式叙述。\n\n## 救治建议与实施路径\n立即摘除并销毁病叶，将病叶带出田外深埋或烧毁，阻断孢子扩散途径。对病株周围 1 米范围内的健康叶片实施预防性喷药，覆盖潜在侵染点。检查植株茎基部是否有褐色凹陷病斑，确认病害是否已侵入维管束系统。若叶背出现白色霉层或菌丝体，则需立即升级复核",
+      "safety_passed": false,
+      "timestamp": "2026-03-30T02:16:52.218065"
+    }
+  ],
+  "report_meta": {
+    "multi_agent_meta": {
+      "provider": "ollama",
+      "model": "deepseek-r1:8b",
+      "latency_ms": 322733,
+      "request_id": "",
+      "is_real_output": true,
+      "used_fallback": true,
+      "output_mode": "plain_markdown_section"
+    },
+    "baseline_meta": {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "latency_ms": 0,
+      "request_id": "",
+      "is_real_output": false,
+      "used_fallback": true,
+      "error": {
+        "code": "REAL_OUTPUT_REQUIRED",
+        "stage": "baseline_single_llm",
+        "agent_name": "baseline_single_llm",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "message": "[WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。",
+        "error_type": "ConnectTimeout"
+      }
+    },
+    "quality_issues": [
+      {
+        "source": "baseline_markdown",
+        "code": "BASELINE_REPORT_UNAVAILABLE",
+        "message": "[WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。"
+      }
+    ],
+    "baseline_error": {
+      "code": "REAL_OUTPUT_REQUIRED",
+      "stage": "baseline_single_llm",
+      "agent_name": "baseline_single_llm",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "message": "[WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。",
+      "error_type": "ConnectTimeout"
+    }
+  }
+}

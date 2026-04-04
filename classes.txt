@@ -1,0 +1,8 @@
+leaf
+leaf_spot
+powdery_mildew_leaf
+gray_mold
+angular_leafspot
+blossom_blight
+powdery_mildew_fruit
+anthracnose_fruit_rot
