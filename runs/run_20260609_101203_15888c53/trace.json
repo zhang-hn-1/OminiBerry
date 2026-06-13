@@ -1,0 +1,1978 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "active_agents": [
+        "diagnosis_evidence_officer",
+        "differential_officer",
+        "berry_qa_expert",
+        "cultivation_management_officer"
+      ],
+      "layers": [
+        {
+          "layer": 1,
+          "layer_name": "hypothesis",
+          "agents": [
+            "diagnosis_evidence_officer",
+            "differential_officer"
+          ],
+          "parallelism": 2
+        },
+        {
+          "layer": 2,
+          "layer_name": "decision",
+          "agents": [
+            "berry_qa_expert",
+            "cultivation_management_officer"
+          ],
+          "parallelism": 2
+        }
+      ],
+      "expert_turns": [
+        {
+          "agent_name": "diagnosis_evidence_officer",
+          "role": "病理推理专家（单图假设构建者）",
+          "citations": [],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 20235,
+            "request_id": "f4e08010-29dd-447a-a2e3-b25b450d3691",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "visible_findings": [
+            "叶片病斑",
+            "颜色为褐色",
+            "组织状态为坏死",
+            "病斑边界清晰，伴有黄色晕圈",
+            "病斑分布在叶缘",
+            "病斑模式为集中",
+            "叶片卷曲",
+            "高湿度",
+            "过度浇水"
+          ],
+          "negative_findings": [
+            "未观察到明显的害虫迹象",
+            "未见叶片背面霉层或水浸状软化特征"
+          ],
+          "candidate_causes": [
+            {
+              "name": "灰霉病（Botrytis cinerea）",
+              "why_like": "病斑呈现褐色坏死，且有清晰边界，符合灰霉病的特征。",
+              "why_unlike": "未观察到明显的霉层或水浸状软化特征，可能不符合该病的典型表现。"
+            },
+            {
+              "name": "叶斑病（如叶斑病菌）",
+              "why_like": "病斑集中在叶缘，且有黄色晕圈，符合叶斑病的表现。",
+              "why_unlike": "缺乏明显的病原菌特征，如孢子囊或霉层。"
+            },
+            {
+              "name": "生理性病害（如水分过多引起的坏死）",
+              "why_like": "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。",
+              "why_unlike": "病斑形态较为集中，可能不完全符合生理性病害的表现。"
+            }
+          ],
+          "evidence_strength": "当前证据显示病斑特征明显，但缺乏病原体直接证据，需进一步观察。",
+          "top_k_causes": [
+            {
+              "name": "灰霉病（Botrytis cinerea）",
+              "why_like": "病斑呈现褐色坏死，且有清晰边界，符合灰霉病的特征。",
+              "why_unlike": "未观察到明显的霉层或水浸状软化特征，可能不符合该病的典型表现。"
+            },
+            {
+              "name": "叶斑病（如叶斑病菌）",
+              "why_like": "病斑集中在叶缘，且有黄色晕圈，符合叶斑病的表现。",
+              "why_unlike": "缺乏明显的病原菌特征，如孢子囊或霉层。"
+            },
+            {
+              "name": "生理性病害（如水分过多引起的坏死）",
+              "why_like": "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。",
+              "why_unlike": "病斑形态较为集中，可能不完全符合生理性病害的表现。"
+            }
+          ],
+          "supporting_evidence": [
+            "叶片病斑",
+            "颜色为褐色",
+            "组织状态为坏死",
+            "病斑边界清晰，伴有黄色晕圈",
+            "病斑分布在叶缘",
+            "病斑模式为集中",
+            "叶片卷曲",
+            "高湿度",
+            "过度浇水"
+          ],
+          "counter_evidence": [
+            "未观察到明显的害虫迹象",
+            "未见叶片背面霉层或水浸状软化特征"
+          ],
+          "actions": [],
+          "risks": [],
+          "questions_to_ask": [],
+          "confidence": 0.5,
+          "evidence_board": [
+            {
+              "diagnosis": "灰霉病（Botrytis cinerea）",
+              "supporting": [
+                "叶片病斑",
+                "颜色为褐色",
+                "组织状态为坏死",
+                "病斑边界清晰，伴有黄色晕圈",
+                "病斑分布在叶缘",
+                "病斑模式为集中",
+                "叶片卷曲",
+                "高湿度",
+                "过度浇水",
+                "病斑呈现褐色坏死，且有清晰边界，符合灰霉病的特征。"
+              ],
+              "counter": [
+                "未观察到明显的害虫迹象",
+                "未见叶片背面霉层或水浸状软化特征",
+                "未观察到明显的霉层或水浸状软化特征，可能不符合该病的典型表现。"
+              ],
+              "missing": [],
+              "sources": []
+            },
+            {
+              "diagnosis": "叶斑病（如叶斑病菌）",
+              "supporting": [
+                "叶片病斑",
+                "颜色为褐色",
+                "组织状态为坏死",
+                "病斑边界清晰，伴有黄色晕圈",
+                "病斑分布在叶缘",
+                "病斑模式为集中",
+                "叶片卷曲",
+                "高湿度",
+                "过度浇水",
+                "病斑集中在叶缘，且有黄色晕圈，符合叶斑病的表现。"
+              ],
+              "counter": [
+                "未观察到明显的害虫迹象",
+                "未见叶片背面霉层或水浸状软化特征",
+                "缺乏明显的病原菌特征，如孢子囊或霉层。"
+              ],
+              "missing": [],
+              "sources": []
+            },
+            {
+              "diagnosis": "生理性病害（如水分过多引起的坏死）",
+              "supporting": [
+                "叶片病斑",
+                "颜色为褐色",
+                "组织状态为坏死",
+                "病斑边界清晰，伴有黄色晕圈",
+                "病斑分布在叶缘",
+                "病斑模式为集中",
+                "叶片卷曲",
+                "高湿度",
+                "过度浇水",
+                "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+              ],
+              "counter": [
+                "未观察到明显的害虫迹象",
+                "未见叶片背面霉层或水浸状软化特征",
+                "病斑形态较为集中，可能不完全符合生理性病害的表现。"
+              ],
+              "missing": [],
+              "sources": []
+            }
+          ]
+        },
+        {
+          "agent_name": "differential_officer",
+          "role": "鉴别排除专家（逻辑质检员）。你的独特视角：你是系统的'魔鬼代言人'，专门质疑和证伪假设。你不关心病害'像什么'，只关心'缺什么'和'矛盾什么'。对每个候选假设进行必要条件校验，挖掘矛盾点，必要时提出竞争性假设。绝对不做：不构建初始假设、不给防治建议、不做环境管理建议。",
+          "citations": [
+            "image_evidence:pending"
+          ],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 20394,
+            "request_id": "457cb942-2232-49eb-ae32-d6a1c040f79d",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "ranked_differentials": [
+            {
+              "name": "真菌性病害",
+              "why_supported": "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+              "why_not_primary": "缺乏对霉层的观察，无法确认是否为真菌感染。"
+            },
+            {
+              "name": "细菌性病害",
+              "why_supported": "病斑的颜色和组织状态可能与细菌性病害相符，但缺乏关键特征。",
+              "why_not_primary": "缺乏水浸状软化特征，且细菌性病害通常伴随明显的水浸状病斑。"
+            },
+            {
+              "name": "病毒性病害",
+              "why_supported": "某些病毒性病害可能导致叶片变色和变形，但缺乏其他支持性特征。",
+              "why_not_primary": "病斑特征不典型，且病毒性病害通常伴随其他系统性症状。"
+            },
+            {
+              "name": "营养缺乏",
+              "why_supported": "某些营养缺乏可能导致叶片变色，但缺乏具体的营养缺乏症状。",
+              "why_not_primary": "病斑特征不符合典型的营养缺乏表现，且缺乏相关的生长环境信息。"
+            },
+            {
+              "name": "环境应激",
+              "why_supported": "高湿度和过度浇水可能导致植物应激，但缺乏直接证据。",
+              "why_not_primary": "缺乏明确的环境应激因素证据，且症状不完全符合环境应激的典型表现。"
+            }
+          ],
+          "why_primary": [
+            "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。"
+          ],
+          "why_not_primary": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "decisive_missing_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "top_k_causes": [
+            {
+              "name": "真菌性病害",
+              "why_like": "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+              "why_unlike": "缺乏对霉层的观察，无法确认是否为真菌感染。"
+            },
+            {
+              "name": "细菌性病害",
+              "why_like": "病斑的颜色和组织状态可能与细菌性病害相符，但缺乏关键特征。",
+              "why_unlike": "缺乏水浸状软化特征，且细菌性病害通常伴随明显的水浸状病斑。"
+            },
+            {
+              "name": "病毒性病害",
+              "why_like": "某些病毒性病害可能导致叶片变色和变形，但缺乏其他支持性特征。",
+              "why_unlike": "病斑特征不典型，且病毒性病害通常伴随其他系统性症状。"
+            },
+            {
+              "name": "营养缺乏",
+              "why_like": "某些营养缺乏可能导致叶片变色，但缺乏具体的营养缺乏症状。",
+              "why_unlike": "病斑特征不符合典型的营养缺乏表现，且缺乏相关的生长环境信息。"
+            },
+            {
+              "name": "环境应激",
+              "why_like": "高湿度和过度浇水可能导致植物应激，但缺乏直接证据。",
+              "why_unlike": "缺乏明确的环境应激因素证据，且症状不完全符合环境应激的典型表现。"
+            }
+          ],
+          "supporting_evidence": [
+            "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。"
+          ],
+          "counter_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "actions": [],
+          "risks": [],
+          "questions_to_ask": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": [
+            {
+              "diagnosis": "真菌性病害",
+              "supporting": [
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "缺乏对霉层的观察，无法确认是否为真菌感染。"
+              ],
+              "missing": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+              ],
+              "sources": [
+                "image_evidence:pending"
+              ]
+            },
+            {
+              "diagnosis": "细菌性病害",
+              "supporting": [
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+                "病斑的颜色和组织状态可能与细菌性病害相符，但缺乏关键特征。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "缺乏水浸状软化特征，且细菌性病害通常伴随明显的水浸状病斑。"
+              ],
+              "missing": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+              ],
+              "sources": [
+                "image_evidence:pending"
+              ]
+            },
+            {
+              "diagnosis": "病毒性病害",
+              "supporting": [
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+                "某些病毒性病害可能导致叶片变色和变形，但缺乏其他支持性特征。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "病斑特征不典型，且病毒性病害通常伴随其他系统性症状。"
+              ],
+              "missing": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+              ],
+              "sources": [
+                "image_evidence:pending"
+              ]
+            },
+            {
+              "diagnosis": "营养缺乏",
+              "supporting": [
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+                "某些营养缺乏可能导致叶片变色，但缺乏具体的营养缺乏症状。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "病斑特征不符合典型的营养缺乏表现，且缺乏相关的生长环境信息。"
+              ],
+              "missing": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+              ],
+              "sources": [
+                "image_evidence:pending"
+              ]
+            },
+            {
+              "diagnosis": "环境应激",
+              "supporting": [
+                "病斑特征符合真菌性病害的典型表现，且环境湿度高可能促进真菌生长。",
+                "高湿度和过度浇水可能导致植物应激，但缺乏直接证据。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "缺乏明确的环境应激因素证据，且症状不完全符合环境应激的典型表现。"
+              ],
+              "missing": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+              ],
+              "sources": [
+                "image_evidence:pending"
+              ]
+            }
+          ]
+        },
+        {
+          "agent_name": "berry_qa_expert",
+          "role": "草莓防治专家（防治方案制定者）",
+          "citations": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 17953,
+            "request_id": "86a5b059-a861-43e1-9771-d200f3229927",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "today_actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "control_options": [
+            "对叶部白粉病可使用多菌灵、苯醚甲环唑等药剂进行防治；对灰霉病可选用氟硅唑、吡唑醚菌酯等；角斑病可用氟环唑、噻呋酰胺等药剂；炭疽果腐病可选用甲基托布津、噻呋酰胺等。",
+            "生防选择可考虑使用枯草芽孢杆菌、链霉菌等生物防治剂。"
+          ],
+          "observe_48h": [
+            "观察病斑是否有扩展趋势，特别是相邻健康叶片的变化。",
+            "检查病叶背面是否出现霉层，评估病害类型。",
+            "注意环境湿度变化对病害发展的影响。"
+          ],
+          "escalation_triggers": [
+            "病斑迅速扩展至相邻健康叶片。",
+            "病叶背面出现明显的霉层或水浸状软化特征。",
+            "观察到新发病斑数量增加。"
+          ],
+          "key_evidence_gaps": [],
+          "top_k_causes": [],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。",
+            "对叶部白粉病可使用多菌灵、苯醚甲环唑等药剂进行防治；对灰霉病可选用氟硅唑、吡唑醚菌酯等；角斑病可用氟环唑、噻呋酰胺等药剂；炭疽果腐病可选用甲基托布津、噻呋酰胺等。",
+            "生防选择可考虑使用枯草芽孢杆菌、链霉菌等生物防治剂。"
+          ],
+          "risks": [
+            "病斑迅速扩展至相邻健康叶片。",
+            "病叶背面出现明显的霉层或水浸状软化特征。",
+            "观察到新发病斑数量增加。"
+          ],
+          "questions_to_ask": [
+            "观察病斑是否有扩展趋势，特别是相邻健康叶片的变化。",
+            "检查病叶背面是否出现霉层，评估病害类型。",
+            "注意环境湿度变化对病害发展的影响。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": []
+        },
+        {
+          "agent_name": "cultivation_management_officer",
+          "role": "农艺环境专家（环境管理师）",
+          "citations": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 22318,
+            "request_id": "732872c9-912c-400b-a552-244f2bf33cb4",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "management_timeline": [
+            "立即对疑似病株进行物理隔离。",
+            "调整灌溉和通风管理，降低环境湿度。",
+            "48小时后复查病株状态。"
+          ],
+          "low_risk_actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "environment_adjustments": [
+            "改善通风，降低湿度，避免高湿环境。",
+            "调整灌溉频率，避免过度浇水导致土壤湿度过高。",
+            "确保植物生长环境的光照均匀，避免光照反射影响。"
+          ],
+          "followup_nodes": [
+            "48小时后复查病株状态，观察是否有新病斑出现。",
+            "定期检查相邻健康植株，评估传播风险。"
+          ],
+          "top_k_causes": [],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。",
+            "改善通风，降低湿度，避免高湿环境。",
+            "调整灌溉频率，避免过度浇水导致土壤湿度过高。",
+            "确保植物生长环境的光照均匀，避免光照反射影响。"
+          ],
+          "risks": [],
+          "questions_to_ask": [
+            "48小时后复查病株状态，观察是否有新病斑出现。",
+            "定期检查相邻健康植株，评估传播风险。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": []
+        }
+      ],
+      "summary": {
+        "consensus": [],
+        "conflicts": [],
+        "unique_points": [],
+        "next_focus": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [],
+        "open_questions": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "evidence_gaps": [
+          "缺乏对病斑边缘水浸状软化特征的观察结果。",
+          "缺乏对病叶背面是否有霉层的检查结果。",
+          "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "recommended_experts": [],
+        "uncertainty_score": 0.20287499999999997,
+        "stop_signal": false,
+        "diagnosis_board": {
+          "working_diagnoses": [],
+          "supporting": [],
+          "counter": [],
+          "differentials": []
+        },
+        "evidence_board": {
+          "missing_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "verification_value": []
+        },
+        "action_board": {
+          "today_actions": [],
+          "control_options": [
+            "对叶部白粉病可使用多菌灵、苯醚甲环唑等药剂进行防治；对灰霉病可选用氟硅唑、吡唑醚菌酯等；角斑病可用氟环唑、噻呋酰胺等药剂；炭疽果腐病可选用甲基托布津、噻呋酰胺等。",
+            "生防选择可考虑使用枯草芽孢杆菌、链霉菌等生物防治剂。"
+          ],
+          "observe_48h": [
+            "观察病斑是否有扩展趋势，特别是相邻健康叶片的变化。",
+            "检查病叶背面是否出现霉层，评估病害类型。",
+            "注意环境湿度变化对病害发展的影响。"
+          ],
+          "escalation_triggers": [
+            "病斑迅速扩展至相邻健康叶片。",
+            "病叶背面出现明显的霉层或水浸状软化特征。",
+            "观察到新发病斑数量增加。"
+          ],
+          "management_timeline": [
+            "立即对疑似病株进行物理隔离。",
+            "调整灌溉和通风管理，降低环境湿度。",
+            "48小时后复查病株状态。"
+          ],
+          "low_risk_actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "environment_adjustments": [
+            "改善通风，降低湿度，避免高湿环境。",
+            "调整灌溉频率，避免过度浇水导致土壤湿度过高。",
+            "确保植物生长环境的光照均匀，避免光照反射影响。"
+          ],
+          "followup_nodes": [
+            "48小时后复查病株状态，观察是否有新病斑出现。",
+            "定期检查相邻健康植株，评估传播风险。"
+          ]
+        },
+        "risk_board": {
+          "prohibited_actions": [],
+          "risk_flags": [],
+          "confidence_boundary": [],
+          "overtreatment_risks": [],
+          "undertreatment_risks": []
+        },
+        "diagnosis_evidence": [],
+        "action_focus": [],
+        "verification_tasks": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "uncertainty_triggers": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "report_priority": [],
+        "evidence_sufficiency": ""
+      },
+      "shared_state": {
+        "consensus": [],
+        "conflicts": [],
+        "unique_points": [],
+        "next_focus": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [
+          "灰霉病（Botrytis cinerea）",
+          "叶斑病（如叶斑病菌）",
+          "生理性病害（如水分过多引起的坏死）",
+          "真菌性病害",
+          "细菌性病害"
+        ],
+        "open_questions": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "evidence_gaps": [
+          "缺乏对病斑边缘水浸状软化特征的观察结果。",
+          "缺乏对病叶背面是否有霉层的检查结果。",
+          "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "recommended_experts": [],
+        "uncertainty_score": 0.20287499999999997,
+        "stop_signal": false,
+        "active_agents": [
+          "diagnosis_evidence_officer",
+          "differential_officer",
+          "berry_qa_expert",
+          "cultivation_management_officer"
+        ],
+        "proposed_actions": [
+          "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+          "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+          "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+          "检查相邻健康叶片是否有新发病斑，评估传播风险。",
+          "对叶部白粉病可使用多菌灵、苯醚甲环唑等药剂进行防治；对灰霉病可选用氟硅唑、吡唑醚菌酯等；角斑病可用氟环唑、噻呋酰胺等药剂；炭疽果腐病可选用甲基托布津、噻呋酰胺等。",
+          "生防选择可考虑使用枯草芽孢杆菌、链霉菌等生物防治剂。",
+          "改善通风，降低湿度，避免高湿环境。",
+          "调整灌溉频率，避免过度浇水导致土壤湿度过高。",
+          "确保植物生长环境的光照均匀，避免光照反射影响。"
+        ],
+        "evidence_board": {
+          "missing_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "verification_value": []
+        },
+        "action_focus": [
+          "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+          "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+          "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+          "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+        ],
+        "verification_tasks": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "uncertainty_triggers": [
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "report_priority": [
+          "先写病例摘要，再写诊断判断与置信说明",
+          "复查与补证建议写清可执行动作，再展开救治路径",
+          "救治建议与实施路径前置，并突出风险边界、预后与复查",
+          "复查与补证建议前置，并降低结论措辞强度",
+          "请复核以下不确定信息：光照反光影响边界判断"
+        ],
+        "evidence_sufficiency": ""
+      }
+    },
+    {
+      "round": 2,
+      "active_agents": [
+        "diagnosis_evidence_officer",
+        "cultivation_management_officer"
+      ],
+      "layers": [
+        {
+          "layer": 1,
+          "layer_name": "hypothesis",
+          "agents": [
+            "diagnosis_evidence_officer"
+          ],
+          "parallelism": 1
+        },
+        {
+          "layer": 2,
+          "layer_name": "decision",
+          "agents": [
+            "cultivation_management_officer"
+          ],
+          "parallelism": 1
+        }
+      ],
+      "expert_turns": [
+        {
+          "agent_name": "diagnosis_evidence_officer",
+          "role": "病理推理专家（单图假设构建者）",
+          "citations": [
+            "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+            "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+            "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+          ],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 14305,
+            "request_id": "d539cb52-7a1b-4cec-8ffe-68355868f5f9",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "visible_findings": [
+            "叶片病斑",
+            "颜色brown",
+            "组织状态necrosis",
+            "分布位置leaf_edge",
+            "模式clustered"
+          ],
+          "negative_findings": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "candidate_causes": [
+            {
+              "name": "灰霉病（Botrytis cinerea）",
+              "why_like": "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+              "why_unlike": "缺乏对病叶背面霉层的观察结果，无法确认是否为灰霉病。"
+            },
+            {
+              "name": "叶斑病（如叶斑病菌）",
+              "why_like": "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+              "why_unlike": "未观察到病斑边缘水浸状软化特征，可能不符合典型叶斑病的表现。"
+            },
+            {
+              "name": "生理性病害（如水分过多引起的坏死）",
+              "why_like": "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。",
+              "why_unlike": "缺乏对相邻健康叶片是否有新发病斑的观察，无法确认是否为生理性病害。"
+            }
+          ],
+          "evidence_strength": "当前证据支持多种病因假设，但缺乏关键观察结果，导致不确定性较高。",
+          "top_k_causes": [
+            {
+              "name": "灰霉病（Botrytis cinerea）",
+              "why_like": "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+              "why_unlike": "缺乏对病叶背面霉层的观察结果，无法确认是否为灰霉病。"
+            },
+            {
+              "name": "叶斑病（如叶斑病菌）",
+              "why_like": "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+              "why_unlike": "未观察到病斑边缘水浸状软化特征，可能不符合典型叶斑病的表现。"
+            },
+            {
+              "name": "生理性病害（如水分过多引起的坏死）",
+              "why_like": "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。",
+              "why_unlike": "缺乏对相邻健康叶片是否有新发病斑的观察，无法确认是否为生理性病害。"
+            }
+          ],
+          "supporting_evidence": [
+            "叶片病斑",
+            "颜色brown",
+            "组织状态necrosis",
+            "分布位置leaf_edge",
+            "模式clustered"
+          ],
+          "counter_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "actions": [],
+          "risks": [],
+          "questions_to_ask": [],
+          "confidence": 0.5,
+          "evidence_board": [
+            {
+              "diagnosis": "灰霉病（Botrytis cinerea）",
+              "supporting": [
+                "叶片病斑",
+                "颜色brown",
+                "组织状态necrosis",
+                "分布位置leaf_edge",
+                "模式clustered",
+                "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "缺乏对病叶背面霉层的观察结果，无法确认是否为灰霉病。"
+              ],
+              "missing": [],
+              "sources": [
+                "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+                "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+                "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+              ]
+            },
+            {
+              "diagnosis": "叶斑病（如叶斑病菌）",
+              "supporting": [
+                "叶片病斑",
+                "颜色brown",
+                "组织状态necrosis",
+                "分布位置leaf_edge",
+                "模式clustered",
+                "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "未观察到病斑边缘水浸状软化特征，可能不符合典型叶斑病的表现。"
+              ],
+              "missing": [],
+              "sources": [
+                "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+                "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+                "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+              ]
+            },
+            {
+              "diagnosis": "生理性病害（如水分过多引起的坏死）",
+              "supporting": [
+                "叶片病斑",
+                "颜色brown",
+                "组织状态necrosis",
+                "分布位置leaf_edge",
+                "模式clustered",
+                "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+              ],
+              "counter": [
+                "缺乏对病斑边缘水浸状软化特征的观察结果。",
+                "缺乏对病叶背面是否有霉层的检查结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察结果。",
+                "缺乏对相邻健康叶片是否有新发病斑的观察，无法确认是否为生理性病害。"
+              ],
+              "missing": [],
+              "sources": [
+                "病斑呈现褐色坏死，且分布在叶缘，符合灰霉病的典型特征。",
+                "病斑形状为同心圆，且有清晰边界，符合叶斑病的表现。",
+                "高湿度和过度浇水可能导致叶片坏死，且病斑分布在叶缘。"
+              ]
+            }
+          ]
+        },
+        {
+          "agent_name": "cultivation_management_officer",
+          "role": "农艺环境专家（环境管理师）。你的独特视角：你关注的不是具体用什么药，而是植物生长环境如何调控。提供不依赖特定诊断结果的通用环境管理措施：温湿度调控、通风改善、灌溉管理、病株隔离、复查时间节点。这些措施即使诊断有误也不会造成损害。绝对不做：不做诊断推理、不推荐专性药剂、不重复病斑描述。",
+          "citations": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+          ],
+          "invalid_turn": false,
+          "meta": {
+            "provider": "openai",
+            "model": "gpt-4o-mini",
+            "latency_ms": 20886,
+            "request_id": "028ad57e-de8e-4fbf-a65a-ee423ce04c59",
+            "is_real_output": true,
+            "used_fallback": false
+          },
+          "management_timeline": [
+            "立即实施物理隔离措施。",
+            "调整灌溉管理，减少水分过多的风险。",
+            "定期复查病株及周围环境，观察变化。"
+          ],
+          "low_risk_actions": [
+            "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+            "暂停立即摘除并销毁病叶的操作，改为隔离观察。"
+          ],
+          "environment_adjustments": [
+            "改善通风，降低湿度以减少病害发生风险。",
+            "调整灌溉频率，避免过度浇水导致根部积水。"
+          ],
+          "followup_nodes": [
+            "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+            "定期检查温湿度，确保环境适宜植物生长。"
+          ],
+          "top_k_causes": [],
+          "supporting_evidence": [],
+          "counter_evidence": [],
+          "actions": [
+            "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+            "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+            "改善通风，降低湿度以减少病害发生风险。",
+            "调整灌溉频率，避免过度浇水导致根部积水。"
+          ],
+          "risks": [],
+          "questions_to_ask": [
+            "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+            "定期检查温湿度，确保环境适宜植物生长。"
+          ],
+          "confidence": 0.5,
+          "evidence_board": []
+        }
+      ],
+      "summary": {
+        "consensus": [],
+        "conflicts": [
+          "对病斑边缘水浸状软化特征的观察结果仍存在分歧。",
+          "病叶背面是否有霉层的检查结果尚未达成一致。",
+          "相邻健康叶片是否有新发病斑的观察结果仍需确认。"
+        ],
+        "unique_points": [
+          "当前证据支持多种病因假设，但缺乏关键观察结果，导致不确定性较高。"
+        ],
+        "next_focus": [
+          "继续观察病斑变化及相邻健康叶片情况。",
+          "确认病叶背面是否有霉层的检查结果。",
+          "评估相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [
+          "灰霉病（Botrytis cinerea）",
+          "叶斑病（如叶斑病菌）",
+          "生理性病害（如水分过多引起的坏死）"
+        ],
+        "open_questions": [],
+        "evidence_gaps": [],
+        "recommended_experts": [],
+        "uncertainty_score": 0.20287499999999997,
+        "stop_signal": false,
+        "diagnosis_board": {
+          "working_diagnoses": [
+            "灰霉病（Botrytis cinerea）",
+            "叶斑病（如叶斑病菌）",
+            "生理性病害（如水分过多引起的坏死）"
+          ],
+          "supporting": [],
+          "counter": [],
+          "differentials": []
+        },
+        "evidence_board": {
+          "missing_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "verification_value": []
+        },
+        "action_board": {
+          "today_actions": [],
+          "control_options": [],
+          "observe_48h": [],
+          "escalation_triggers": [],
+          "management_timeline": [
+            "立即实施物理隔离措施。",
+            "调整灌溉管理，减少水分过多的风险。",
+            "定期复查病株及周围环境，观察变化。"
+          ],
+          "low_risk_actions": [
+            "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+            "暂停立即摘除并销毁病叶的操作，改为隔离观察。"
+          ],
+          "environment_adjustments": [
+            "改善通风，降低湿度以减少病害发生风险。",
+            "调整灌溉频率，避免过度浇水导致根部积水。"
+          ],
+          "followup_nodes": [
+            "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+            "定期检查温湿度，确保环境适宜植物生长。"
+          ]
+        },
+        "risk_board": {
+          "prohibited_actions": [],
+          "risk_flags": [],
+          "confidence_boundary": [],
+          "overtreatment_risks": [],
+          "undertreatment_risks": []
+        },
+        "diagnosis_evidence": [],
+        "action_focus": [],
+        "verification_tasks": [],
+        "uncertainty_triggers": [],
+        "report_priority": [],
+        "evidence_sufficiency": ""
+      },
+      "shared_state": {
+        "consensus": [],
+        "conflicts": [
+          "对病斑边缘水浸状软化特征的观察结果仍存在分歧。",
+          "病叶背面是否有霉层的检查结果尚未达成一致。",
+          "相邻健康叶片是否有新发病斑的观察结果仍需确认。"
+        ],
+        "unique_points": [
+          "当前证据支持多种病因假设，但缺乏关键观察结果，导致不确定性较高。"
+        ],
+        "next_focus": [
+          "继续观察病斑变化及相邻健康叶片情况。",
+          "确认病叶背面是否有霉层的检查结果。",
+          "评估相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "safety_flags": [],
+        "working_diagnoses": [
+          "灰霉病（Botrytis cinerea）",
+          "叶斑病（如叶斑病菌）",
+          "生理性病害（如水分过多引起的坏死）"
+        ],
+        "open_questions": [
+          "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+          "定期检查温湿度，确保环境适宜植物生长。"
+        ],
+        "evidence_gaps": [
+          "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+          "定期检查温湿度，确保环境适宜植物生长。"
+        ],
+        "recommended_experts": [],
+        "uncertainty_score": 0.20287499999999997,
+        "stop_signal": false,
+        "active_agents": [
+          "diagnosis_evidence_officer",
+          "cultivation_management_officer"
+        ],
+        "proposed_actions": [
+          "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+          "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+          "改善通风，降低湿度以减少病害发生风险。",
+          "调整灌溉频率，避免过度浇水导致根部积水。"
+        ],
+        "evidence_board": {
+          "missing_evidence": [
+            "缺乏对病斑边缘水浸状软化特征的观察结果。",
+            "缺乏对病叶背面是否有霉层的检查结果。",
+            "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+          ],
+          "verification_value": []
+        },
+        "action_focus": [
+          "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+          "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+          "改善通风，降低湿度以减少病害发生风险。",
+          "调整灌溉频率，避免过度浇水导致根部积水。"
+        ],
+        "verification_tasks": [
+          "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+          "定期检查温湿度，确保环境适宜植物生长。"
+        ],
+        "uncertainty_triggers": [
+          "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+          "定期检查温湿度，确保环境适宜植物生长。"
+        ],
+        "report_priority": [
+          "先写病例摘要，再写诊断判断与置信说明",
+          "复查与补证建议写清可执行动作，再展开救治路径",
+          "救治建议与实施路径前置，并突出风险边界、预后与复查",
+          "复查与补证建议前置，并降低结论措辞强度",
+          "请复核以下不确定信息：光照反光影响边界判断",
+          "继续观察病斑变化及相邻健康叶片情况。",
+          "确认病叶背面是否有霉层的检查结果。",
+          "评估相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "evidence_sufficiency": ""
+      }
+    }
+  ],
+  "final": {
+    "top_diagnosis": {
+      "name": "草莓叶片病斑",
+      "confidence": "82.25%"
+    },
+    "candidates": [],
+    "reject_flag": "",
+    "symptom_summary": [
+      "褐变",
+      "坏死",
+      "同心轮纹样",
+      "边界清楚",
+      "黄色晕圈",
+      "叶缘",
+      "簇状分布",
+      "卷曲"
+    ],
+    "visual_evidence": [],
+    "counter_evidence": [],
+    "differential_points": [],
+    "severity_risk": {
+      "level": "中等",
+      "spread_risk": "存在传播风险，需监测相邻植物。",
+      "pruning_guideline": "需定期检查病斑发展情况，及时处理受影响叶片。"
+    },
+    "evidence_to_collect": [
+      "定期检查病斑发展情况",
+      "及时处理受影响叶片",
+      "监测相邻植物的健康状况"
+    ],
+    "actions": [
+      "建议进行详细的病斑边缘观察",
+      "检查病叶背面是否有霉层",
+      "观察相邻健康叶片是否有新发病斑"
+    ],
+    "evidence_board": [
+      {
+        "diagnosis": "草莓叶片病斑",
+        "supporting": [],
+        "counter": [],
+        "missing": [
+          "缺乏对病斑边缘水浸状软化特征的观察结果。",
+          "缺乏对病叶背面是否有霉层的检查结果。",
+          "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "sources": []
+      }
+    ],
+    "rescue_plan": [
+      {
+        "phase": "立即处置",
+        "objective": "使用安全审校后的保守动作",
+        "actions": [
+          "建议进行详细的病斑边缘观察",
+          "检查病叶背面是否有霉层",
+          "观察相邻健康叶片是否有新发病斑"
+        ],
+        "rationale": [
+          "缺乏对病斑边缘水浸状软化特征的观察结果",
+          "缺乏对病叶背面是否有霉层的检查结果",
+          "缺乏对相邻健康叶片是否有新发病斑的观察结果"
+        ],
+        "risk_level": "low"
+      }
+    ],
+    "prohibited_actions": [],
+    "monitoring_plan": [
+      "定期检查病斑发展情况",
+      "及时处理受影响叶片",
+      "监测相邻植物的健康状况"
+    ],
+    "report_outline": [
+      "病例摘要",
+      "诊断判断与置信说明",
+      "复查与补证建议",
+      "救治建议与实施路径",
+      "风险边界",
+      "预后与复查"
+    ],
+    "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。",
+    "confidence_statement": "当前诊断基于观察到的症状，置信度为82.25%。",
+    "citations": [],
+    "safety_notes": [
+      "缺乏对病斑边缘水浸状软化特征的观察结果",
+      "缺乏对病叶背面是否有霉层的检查结果",
+      "缺乏对相邻健康叶片是否有新发病斑的观察结果",
+      "当前诊断基于观察到的症状，置信度为82.25%。但缺乏关键的观察结果，需进一步收集证据以确认诊断。"
+    ]
+  },
+  "safety": {
+    "safety_passed": false,
+    "flags": [
+      "缺乏对病斑边缘水浸状软化特征的观察结果",
+      "缺乏对病叶背面是否有霉层的检查结果",
+      "缺乏对相邻健康叶片是否有新发病斑的观察结果"
+    ],
+    "revised_actions": [
+      "建议进行详细的病斑边缘观察",
+      "检查病叶背面是否有霉层",
+      "观察相邻健康叶片是否有新发病斑"
+    ],
+    "action_level": "低",
+    "review_summary": "当前诊断基于观察到的症状，置信度为82.25%。但缺乏关键的观察结果，需进一步收集证据以确认诊断。",
+    "prohibited_actions": [],
+    "required_followups": [
+      "定期检查病斑发展情况",
+      "及时处理受影响叶片",
+      "监测相邻植物的健康状况"
+    ],
+    "evidence_sufficiency": "当前证据不足以支持最终诊断，需进一步观察和收集证据。"
+  },
+  "shared_state": {
+    "consensus": [],
+    "conflicts": [
+      "对病斑边缘水浸状软化特征的观察结果仍存在分歧。",
+      "病叶背面是否有霉层的检查结果尚未达成一致。",
+      "相邻健康叶片是否有新发病斑的观察结果仍需确认。"
+    ],
+    "unique_points": [
+      "当前证据支持多种病因假设，但缺乏关键观察结果，导致不确定性较高。"
+    ],
+    "next_focus": [
+      "继续观察病斑变化及相邻健康叶片情况。",
+      "确认病叶背面是否有霉层的检查结果。",
+      "评估相邻健康叶片是否有新发病斑的观察结果。"
+    ],
+    "safety_flags": [],
+    "working_diagnoses": [
+      "灰霉病（Botrytis cinerea）",
+      "叶斑病（如叶斑病菌）",
+      "生理性病害（如水分过多引起的坏死）"
+    ],
+    "open_questions": [
+      "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+      "定期检查温湿度，确保环境适宜植物生长。"
+    ],
+    "evidence_gaps": [
+      "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+      "定期检查温湿度，确保环境适宜植物生长。"
+    ],
+    "recommended_experts": [],
+    "uncertainty_score": 0.20287499999999997,
+    "stop_signal": false,
+    "active_agents": [
+      "diagnosis_evidence_officer",
+      "cultivation_management_officer"
+    ],
+    "proposed_actions": [
+      "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+      "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+      "改善通风，降低湿度以减少病害发生风险。",
+      "调整灌溉频率，避免过度浇水导致根部积水。"
+    ],
+    "evidence_board": {
+      "missing_evidence": [
+        "缺乏对病斑边缘水浸状软化特征的观察结果。",
+        "缺乏对病叶背面是否有霉层的检查结果。",
+        "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+      ],
+      "verification_value": []
+    },
+    "action_focus": [
+      "对疑似病株实施物理隔离，使用隔离带或单独摆放。",
+      "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+      "改善通风，降低湿度以减少病害发生风险。",
+      "调整灌溉频率，避免过度浇水导致根部积水。"
+    ],
+    "verification_tasks": [
+      "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+      "定期检查温湿度，确保环境适宜植物生长。"
+    ],
+    "uncertainty_triggers": [
+      "48小时后复查病株，观察病斑变化及相邻健康叶片情况。",
+      "定期检查温湿度，确保环境适宜植物生长。"
+    ],
+    "report_priority": [
+      "先写病例摘要，再写诊断判断与置信说明",
+      "复查与补证建议写清可执行动作，再展开救治路径",
+      "救治建议与实施路径前置，并突出风险边界、预后与复查",
+      "复查与补证建议前置，并降低结论措辞强度",
+      "请复核以下不确定信息：光照反光影响边界判断",
+      "继续观察病斑变化及相邻健康叶片情况。",
+      "确认病叶背面是否有霉层的检查结果。",
+      "评估相邻健康叶片是否有新发病斑的观察结果。"
+    ],
+    "evidence_sufficiency": "",
+    "diagnosis_board": {
+      "working_diagnoses": [],
+      "supporting": [],
+      "counter": [],
+      "differentials": []
+    },
+    "action_board": {
+      "today_actions": [],
+      "control_options": [],
+      "observe_48h": [],
+      "escalation_triggers": [],
+      "management_timeline": [],
+      "low_risk_actions": [],
+      "environment_adjustments": [],
+      "followup_nodes": []
+    },
+    "risk_board": {
+      "prohibited_actions": [],
+      "risk_flags": [],
+      "confidence_boundary": [],
+      "overtreatment_risks": [],
+      "undertreatment_risks": []
+    },
+    "diagnosis_evidence": []
+  },
+  "round_summary_meta": [
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "latency_ms": 70788,
+      "request_id": "45cfdbc5-d5da-4f1f-9df3-16ab42ce7d01",
+      "is_real_output": true,
+      "used_fallback": false,
+      "round": 1
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "latency_ms": 92954,
+      "request_id": "003ef213-e149-4370-a2f7-b0de0fe2f01b",
+      "is_real_output": true,
+      "used_fallback": false,
+      "round": 2
+    }
+  ],
+  "final_meta": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latency_ms": 53782,
+    "request_id": "6bfa1f6a-f04b-4ae1-aa01-60f112efa591",
+    "is_real_output": true,
+    "used_fallback": false
+  },
+  "safety_meta": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latency_ms": 12552,
+    "request_id": "d09e010e-429c-4bed-babd-a8c347b69c24",
+    "is_real_output": true,
+    "used_fallback": false
+  },
+  "execution_meta": {
+    "strict_real_output": false,
+    "fallback_used": false,
+    "rounds_executed": 2,
+    "planner": "layered_evidence_board_v2",
+    "max_parallel_agents_per_layer": 3,
+    "max_concurrency_per_route": 2,
+    "agent_model_routing": {
+      "diagnosis_evidence_officer": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "differential_officer": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "cultivation_management_officer": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "berry_qa_expert": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "coordinator_round_summary": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "coordinator_final": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "safety_reviewer": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "multi_agent_report_writer": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      },
+      "baseline_single_llm": {
+        "provider": "dnxapi",
+        "model": "gpt-4o-mini",
+        "adapter_model": "",
+        "client_name": "dnxapi"
+      }
+    }
+  },
+  "caption": {
+    "visual_summary": "BLIP识别到叶片病斑，主症状为颜色brown、组织状态necrosis，分布位置leaf_edge，模式clustered。",
+    "symptoms": {
+      "color": [
+        "褐变"
+      ],
+      "tissue_state": [
+        "坏死"
+      ],
+      "spot_shape": [
+        "同心轮纹"
+      ],
+      "boundary": [
+        "清晰",
+        "黄色晕圈"
+      ],
+      "distribution_position": [
+        "叶缘"
+      ],
+      "distribution_pattern": [
+        "簇状"
+      ],
+      "morph_change": [
+        "卷曲"
+      ],
+      "pest_cues": [
+        "无明显虫害线索"
+      ],
+      "co_signs": [
+        "湿度高",
+        "浇水过多"
+      ]
+    },
+    "numeric": {
+      "area_ratio": 0.12,
+      "severity_score": 0.534625
+    },
+    "confidence": 0.8225,
+    "ood_score": 0.25,
+    "followup_questions": [
+      "请复核以下不确定信息：光照反光影响边界判断"
+    ],
+    "evidence_refs": [
+      "image_evidence:pending"
+    ]
+  },
+  "decision_packet": {
+    "case_summary": {
+      "crop": "草莓",
+      "case_text": "",
+      "visual_summary": "BLIP识别到叶片病斑，主症状为颜色brown、组织状态necrosis，分布位置leaf_edge，模式clustered。",
+      "observed_symptoms": [
+        "褐变",
+        "坏死",
+        "同心轮纹样",
+        "边界清楚",
+        "黄色晕圈",
+        "叶缘",
+        "簇状分布",
+        "卷曲"
+      ],
+      "followup_questions": [
+        "请复核以下不确定信息：光照反光影响边界判断"
+      ]
+    },
+    "vision_conflict": {},
+    "diagnosis_summary": {
+      "primary_candidate": "",
+      "candidate_diagnoses": [],
+      "visual_candidates": [],
+      "uncertainty_score": 0.2029,
+      "statement_style": "可给出相对明确的判断，但仍需说明边界",
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。"
+    },
+    "missing_information": [
+      "缺乏对病斑边缘水浸状软化特征的观察结果。",
+      "缺乏对病叶背面是否有霉层的检查结果。",
+      "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+    ],
+    "recommended_actions": [],
+    "verification_tasks": [],
+    "safety_notes": [],
+    "report_priority": [],
+    "boards": {
+      "diagnosis_board": {},
+      "evidence_board": {
+        "missing_evidence": [
+          "缺乏对病斑边缘水浸状软化特征的观察结果。",
+          "缺乏对病叶背面是否有霉层的检查结果。",
+          "缺乏对相邻健康叶片是否有新发病斑的观察结果。"
+        ],
+        "verification_value": []
+      },
+      "action_board": {},
+      "risk_board": {}
+    }
+  },
+  "kb_evidence": [
+    {
+      "run_id": "run_20260401_152538_cc134377",
+      "problem_name": "草莓病害图像诊断报告",
+      "case_text": "",
+      "case_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "caption": {
+        "visual_summary": "当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。",
+        "symptoms": {
+          "color": [
+            "褐变"
+          ],
+          "tissue_state": [
+            "坏死"
+          ],
+          "spot_shape": [
+            "不规则"
+          ],
+          "boundary": [
+            "模糊"
+          ],
+          "distribution_position": [
+            "叶背"
+          ],
+          "distribution_pattern": [
+            "散在"
+          ],
+          "morph_change": [
+            "无明显变化"
+          ],
+          "pest_cues": [
+            "虫孔"
+          ],
+          "co_signs": [
+            "无法判断"
+          ]
+        },
+        "numeric": {
+          "area_ratio": 0.20901346360061956,
+          "severity_score": 0.7497747838497162
+        },
+        "confidence": 0.9996997117996216,
+        "ood_score": 0.05,
+        "followup_questions": [
+          "请复核以下不确定信息：无法判断"
+        ],
+        "evidence_refs": [
+          "dinov3:predicted_class:gray_mold",
+          "dinov3:primary_class:gray_mold",
+          "dinov3:confidence:0.9997",
+          "dinov3:damaged_area_ratio_of_leaf:0.2090",
+          "qwen3vl:slot_extraction",
+          "qwen3vl:model:qwen3-vl-4B"
+        ]
+      },
+      "image_analysis_display": {
+        "摘要": "当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。",
+        "结论卡片": {
+          "综合判断": "晚疫病",
+          "综合判断来源": "分类头",
+          "分类结果": "晚疫病",
+          "分类置信度": "100.0%",
+          "分割用途": "仅用于受损面积估计",
+          "病损面积占叶片比例": "20.9%",
+          "叶片像素": 26555,
+          "病损像素": 7017,
+          "结果一致性": "病种与面积基本一致"
+        },
+        "一致性说明": "病种判断以分类结果为主，分割结果仅用于估计病斑面积和受损程度。",
+        "结果差异分析": {
+          "差异摘要": "分类病种判断与受损面积信息整体一致。",
+          "差异原因": [
+            "分类病种判断与受损面积信息未见明显矛盾。"
+          ],
+          "解释建议": "保持当前分类病种判断，同时持续跟踪病损面积变化。",
+          "索引说明": "分割头不参与病种判读，仅用于病损面积估计。"
+        },
+        "分类候选": [
+          {
+            "名称": "晚疫病",
+            "置信度": "100.0%"
+          },
+          {
+            "名称": "早疫病",
+            "置信度": "0.0%"
+          },
+          {
+            "名称": "白星病",
+            "置信度": "0.0%"
+          }
+        ],
+        "病斑面积明细": [
+          {
+            "区域": "病斑区域3",
+            "病损面积占叶片比例": "20.9%",
+            "病损像素": 7017,
+            "平均概率": "92.8%"
+          }
+        ]
+      },
+      "top_diagnosis": {
+        "name": "晚疫病",
+        "confidence": "低"
+      },
+      "candidates": [
+        {
+          "name": "晚疫病",
+          "why_like": "当前视觉病种判断仍以整体分类为主，对“晚疫病”有一定倾向，但证据仍需补齐。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        },
+        {
+          "name": "晚疫病",
+          "why_like": "分类模型中“晚疫病”呈现较高类别倾向（约 100.0%），仅作候选参考。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        }
+      ],
+      "actions": [
+        "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+        "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+        "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。",
+        "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+      ],
+      "rescue_plan": [
+        {
+          "phase": "立即复核",
+          "objective": "先补充关键证据并确认结果冲突来源。",
+          "actions": [
+            "对疑似病株进行物理隔离，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层，并观察病斑边缘是否有水浸状软化特征。"
+          ],
+          "rationale": [
+            "当前存在结果冲突，先补证据比直接升级处理更稳妥。"
+          ],
+          "risk_level": "low"
+        },
+        {
+          "phase": "保守观察",
+          "objective": "在未确证前降低误治风险。",
+          "actions": [
+            "保持通风、隔离重症叶片，并持续复拍观察病斑变化。"
+          ],
+          "rationale": [
+            "证据不足时优先采用低风险、可逆的管理措施。"
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。",
+      "confidence_statement": "当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_outline": [
+        "病例摘要：可见征象与受害范围，不写确诊口径。",
+        "诊断判断与置信说明：首位疑似「晚疫病」、模型倾向、支持/鉴别与知识库摘要（若有）。",
+        "复查与补证建议：优先补什么、有何帮助、可怎么做。",
+        "救治建议与实施路径：分步动作、观察与升级条件（证据不足不写具体药剂配方）。",
+        "风险边界、预后与复查：禁忌、恶化信号与复查节点。"
+      ],
+      "report_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_excerpt": "# 农业救治报告\n\n## 病例摘要\n本节只归纳当前图像能直接支撑的事实：叶片可见的病斑形态、颜色与组织变化、分布位置以及模型给出的受害范围估计。这些材料用于描述「现场看到了什么」，并不等同于已完成病名确诊。在单张图像条件下，结论强度天然受限；后续章节会在补证前提下讨论排序与处置。读者应把本节理解为观察起点，而非治疗决策终点。\n\n## 诊断判断与置信说明\n结合现有材料，当前首位疑似方向更接近「晚疫病」，审慎层级可暂记为「低」。与「其他相似叶部病害」之间仍有相似征象需要继续排除。叶面可见线索与照片分类共同指向上述方向，但仍不等于田间病原确诊。鉴别上仍需把相似叶部病害放在同一桌面上比较。对「其他相似叶部病害」若关键区分特征未出现，可解释其暂未压过首位。证据边界：当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。若出现分类百分数，只表示「更像哪一类」，不能当作确诊概率。\n\n## 复查与补证建议\n优先补拍叶背近景，重点确认是否存在白色或紫色霉层。若观察到典型霉层，则晚疫病诊断依据显著增强；若持续未见，则需重新评估病原可能性。拍摄时请贴近病斑，确保光线充足以看清细微附着物。病斑边缘是否呈现水浸状或油渍状软化也是关键鉴别点。若边缘模糊且伴有半透明感，则符合晚疫病或细菌性病害特征；若边缘清晰干燥，则指向其他真菌性病害。建议围绕病斑轮廓进行特写拍摄，捕捉组织软化细节。病斑是否出现同心轮纹是排除早疫病的核心指标。若复拍发现清晰轮纹，则早疫病嫌疑上升；若仅为不规则扩散，则更支持晚疫病判断。请在病斑扩展区域寻找此类纹理变化，并记录有无新发小斑点。在 24 至 48 小时窗口内，需复拍同叶位以监测病斑扩展速度。若病斑面积较基线增加超过 20% 或出现连续新发病斑，则表明侵染活跃，应上调处置强度。反之，若变化轻微且无新发，可维持当前低风险管理策略。相邻健康叶片的状态直接反映传播风险。若周边叶片在短期内出现同类病斑，则需扩大隔离范围并加强环境调控。建议检查植株周围 1 米内的叶片，记录新发病灶的位置与数量。病叶摘除后暂不销毁，应放入密封袋冷藏保存以便后续观察。待 48 小时明确病征后再做最终处理，避免因误判导致病原扩散。此操作有助于在补证过程中保留关键实物证据。环境调控方面，建议立即调整灌溉策略，改为根部滴灌或沟灌。避免叶面喷淋导致湿度过高，从而抑制病原繁殖。同时加强通风排湿，将冠层相对湿度控制在 80% 以下。若复拍显示病情迅速恶化或关键阴性征象转为阳性，则需升级复核与处置方案。若关键分歧证据持续阴性且环境纠偏后病情趋稳，则可维持现有判断。所有观察结果应作为调整防治强度的直接依据。\n\n## 救治建议与实施路径\n**立即执行物理隔离与病叶暂存** 对疑似病株实施物理隔离，阻断其与周围健康植株的直接接触。摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理",
+      "safety_passed": true,
+      "timestamp": "2026-04-01T15:44:20.883683"
+    },
+    {
+      "run_id": "run_20260401_175542_d30bf3fd",
+      "problem_name": "草莓病害图像诊断报告",
+      "case_text": "",
+      "case_summary": "主诊断倾向：晚疫病（置信说明：中） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。 分类病种判断与受损面积信息整体一致。 当前初步倾向于“晚疫病”，但仍需补充关键图像或检验信息后再提高结论强度。",
+      "caption": {
+        "visual_summary": "当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。",
+        "symptoms": {
+          "color": [
+            "褐变"
+          ],
+          "tissue_state": [
+            "坏死"
+          ],
+          "spot_shape": [
+            "不规则"
+          ],
+          "boundary": [
+            "模糊"
+          ],
+          "distribution_position": [
+            "叶背"
+          ],
+          "distribution_pattern": [
+            "散在"
+          ],
+          "morph_change": [
+            "无明显变化"
+          ],
+          "pest_cues": [
+            "虫孔"
+          ],
+          "co_signs": [
+            "无法判断"
+          ]
+        },
+        "numeric": {
+          "area_ratio": 0.20901346360061956,
+          "severity_score": 0.7497747838497162
+        },
+        "confidence": 0.9996997117996216,
+        "ood_score": 0.05,
+        "followup_questions": [
+          "请复核以下不确定信息：无法判断"
+        ],
+        "evidence_refs": [
+          "dinov3:predicted_class:gray_mold",
+          "dinov3:primary_class:gray_mold",
+          "dinov3:confidence:0.9997",
+          "dinov3:damaged_area_ratio_of_leaf:0.2090",
+          "qwen3vl:slot_extraction",
+          "qwen3vl:model:qwen3-vl-4B"
+        ]
+      },
+      "image_analysis_display": {
+        "摘要": "当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。",
+        "结论卡片": {
+          "综合判断": "晚疫病",
+          "综合判断来源": "分类头",
+          "分类结果": "晚疫病",
+          "分类置信度": "100.0%",
+          "分割用途": "仅用于受损面积估计",
+          "病损面积占叶片比例": "20.9%",
+          "叶片像素": 26555,
+          "病损像素": 7017,
+          "结果一致性": "病种与面积基本一致"
+        },
+        "一致性说明": "病种判断以分类结果为主，分割结果仅用于估计病斑面积和受损程度。",
+        "结果差异分析": {
+          "差异摘要": "分类病种判断与受损面积信息整体一致。",
+          "差异原因": [
+            "分类病种判断与受损面积信息未见明显矛盾。"
+          ],
+          "解释建议": "保持当前分类病种判断，同时持续跟踪病损面积变化。",
+          "索引说明": "分割头不参与病种判读，仅用于病损面积估计。"
+        },
+        "分类候选": [
+          {
+            "名称": "晚疫病",
+            "置信度": "100.0%"
+          },
+          {
+            "名称": "早疫病",
+            "置信度": "0.0%"
+          },
+          {
+            "名称": "白星病",
+            "置信度": "0.0%"
+          }
+        ],
+        "病斑面积明细": [
+          {
+            "区域": "病斑区域3",
+            "病损面积占叶片比例": "20.9%",
+            "病损像素": 7017,
+            "平均概率": "92.8%"
+          }
+        ]
+      },
+      "top_diagnosis": {
+        "name": "晚疫病",
+        "confidence": "中"
+      },
+      "candidates": [
+        {
+          "name": "晚疫病",
+          "why_like": "当前视觉病种判断仍以整体分类为主，对“晚疫病”有一定倾向，但证据仍需补齐。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        },
+        {
+          "name": "晚疫病",
+          "why_like": "分类模型中“晚疫病”呈现较高类别倾向（约 100.0%），仅作候选参考。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        }
+      ],
+      "actions": [
+        "对疑似病株实施物理隔离，使用隔离带或单独摆放，避免与周围健康植株接触。",
+        "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+        "检查病叶背面是否有白色或紫色霉层（孢子囊梗），并观察病斑边缘是否有水浸状软化特征。",
+        "检查相邻健康叶片是否有新发病斑，评估传播风险。"
+      ],
+      "rescue_plan": [
+        {
+          "phase": "立即复核",
+          "objective": "先补充关键证据并确认结果冲突来源。",
+          "actions": [
+            "对疑似病株实施物理隔离，使用隔离带或单独摆放，避免与周围健康植株接触。",
+            "摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。",
+            "检查病叶背面是否有白色或紫色霉层（孢子囊梗），并观察病斑边缘是否有水浸状软化特征。"
+          ],
+          "rationale": [
+            "当前存在结果冲突，先补证据比直接升级处理更稳妥。"
+          ],
+          "risk_level": "low"
+        },
+        {
+          "phase": "保守观察",
+          "objective": "在未确证前降低误治风险。",
+          "actions": [
+            "保持通风、隔离重症叶片，并持续复拍观察病斑变化。"
+          ],
+          "rationale": [
+            "证据不足时优先采用低风险、可逆的管理措施。"
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。",
+      "confidence_statement": "当前初步倾向于“晚疫病”，但仍需补充关键图像或检验信息后再提高结论强度。",
+      "report_outline": [
+        "病例摘要：可见征象与受害范围，不写确诊口径。",
+        "诊断判断与置信说明：首位疑似「晚疫病」、模型倾向、支持/鉴别与知识库摘要（若有）。",
+        "复查与补证建议：优先补什么、有何帮助、可怎么做。",
+        "救治建议与实施路径：分步动作、观察与升级条件（证据不足不写具体药剂配方）。",
+        "风险边界、预后与复查：禁忌、恶化信号与复查节点。"
+      ],
+      "report_summary": "主诊断倾向：晚疫病（置信说明：中） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 100.0%，病损面积约占叶片面积 20.9%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 100.0%，病损面积约占叶片面积 20.9%。 分类病种判断与受损面积信息整体一致。 当前初步倾向于“晚疫病”，但仍需补充关键图像或检验信息后再提高结论强度。",
+      "report_excerpt": "# 农业救治报告\n\n## 病例摘要\n叶片呈现褐色坏死斑，形态不规则且边界模糊，主要分布于叶背。病损区域约占单叶面积的 20.9%，整叶未见明显卷曲或萎蔫。图像中可见虫孔痕迹，但缺乏白色或紫色霉层及水浸状软化特征。未见同心轮纹或油渍状光泽，暂不支持早疫病或细菌性斑点病判断。褐变与坏死是主要组织反应，边界模糊提示病原可能处于活跃期。叶背发病位置符合相关病害典型侵染路径，昆虫孔洞可能为侵入通道。依据图像分割数据，受害范围量化为 20.9%，属于中度叶部损伤。该数值仅反映当前画面可见度，不代表田间实际流行程度。单张图像无法确认孢子囊梗等确诊性微观征象，证据链存在缺口。\n\n## 诊断判断与置信说明\n结合现有材料，当前首位疑似方向更接近「晚疫病」，审慎层级可暂记为「中」。与「其他相似叶部病害」之间仍有相似征象需要继续排除。叶面可见线索与照片分类共同指向上述方向，但仍不等于田间病原确诊。鉴别上仍需把相似叶部病害放在同一桌面上比较。对「其他相似叶部病害」若关键区分特征未出现，可解释其暂未压过首位。证据边界：当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。若出现分类百分数，只表示「更像哪一类」，不能当作确诊概率。\n\n## 复查与补证建议\n优先补拍叶背近景，重点确认是否存在白色或紫色霉层（孢子囊梗）。若观察到典型霉层附着，则需立即上调高风险候选权重并启动紧急复核；若持续缺乏该征象，则“晚疫病”的排序依据将更为稳固。病斑边缘是否呈现明显的水浸状软化特征，是区分晚疫病与其他叶部病害的关键判据。建议围绕病斑边缘进行近距离观察，若发现组织软化且边界模糊，则支持晚疫病判断；若边缘清晰或呈干性坏死，则需重新评估其他真菌性叶斑病的可能性。监测病斑在 24 至 48 小时内的动态变化，记录外扩面积是否较基线增加 20% 以上。若病斑迅速扩大或出现大量新霉层，应视为升级信号并提高处理强度；若外扩幅度小于 5% 且无新发病斑，可维持当前低风险管理策略。检查相邻健康叶片是否出现新的褐色不规则病斑，以评估病害传播风险。若连续两次复查发现同类病斑数量增加或整株多叶位同步受累，则表明传播活跃，需扩大隔离范围并升级处置方案。病斑中心是否出现褪绿或穿孔现象，有助于进一步排除细菌性斑点病等干扰项。若中心区域出现明显穿孔或褪绿，且缺乏晚疫病特有的霉层，则诊断方向需向细菌性或特定真菌性病害调整。摘除病叶后暂不销毁，放入密封袋冷藏保存，待 48 小时观察明确病征后再做最终处理。此举既能保留样本用于后续可能的送检，又能通过短期观察验证病斑演变趋势，为最终决策提供实证支持。将疑似病株移至通风良好且远离健康植株的独立区域，阻断潜在气流传播路径。调整灌溉策略为滴灌或根部浇水，避免叶片长时间湿润，从而降低环境湿度对病原扩散的促进作用。若 48 小时内关键分歧证据持续阴性，且环境纠偏后病情趋稳，可降低高风险候选权重。反之",
+      "safety_passed": true,
+      "timestamp": "2026-04-01T18:14:50.219452"
+    },
+    {
+      "run_id": "run_20260330_014127_cab95b06",
+      "problem_name": "草莓病害图像诊断报告",
+      "case_text": "",
+      "case_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "caption": {
+        "visual_summary": "当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。",
+        "symptoms": {
+          "color": [
+            "混合"
+          ],
+          "tissue_state": [
+            "坏死"
+          ],
+          "spot_shape": [
+            "不规则"
+          ],
+          "boundary": [
+            "清晰"
+          ],
+          "distribution_position": [
+            "叶缘"
+          ],
+          "distribution_pattern": [
+            "散在"
+          ],
+          "morph_change": [
+            "无明显变化"
+          ],
+          "pest_cues": [
+            "无明显虫害线索"
+          ],
+          "co_signs": [
+            "无法判断"
+          ]
+        },
+        "numeric": {
+          "area_ratio": 0.4450532724505327,
+          "severity_score": 0.6910856813192368
+        },
+        "confidence": 0.9214475750923157,
+        "ood_score": 0.07855242490768433,
+        "followup_questions": [
+          "请复核以下不确定信息：无法判断"
+        ],
+        "evidence_refs": [
+          "dinov3:predicted_class:gray_mold",
+          "dinov3:primary_class:gray_mold",
+          "dinov3:confidence:0.9214",
+          "dinov3:damaged_area_ratio_of_leaf:0.4451",
+          "qwen3vl:slot_extraction",
+          "qwen3vl:model:qwen3-vl-4B"
+        ]
+      },
+      "image_analysis_display": {
+        "摘要": "当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。",
+        "结论卡片": {
+          "综合判断": "晚疫病",
+          "综合判断来源": "分类头",
+          "分类结果": "晚疫病",
+          "分类置信度": "92.1%",
+          "分割用途": "仅用于受损面积估计",
+          "病损面积占叶片比例": "44.5%",
+          "叶片像素": 42705,
+          "病损像素": 19006,
+          "结果一致性": "病种与面积基本一致"
+        },
+        "一致性说明": "病种判断以分类结果为主，分割结果仅用于估计病斑面积和受损程度。",
+        "结果差异分析": {
+          "差异摘要": "分类病种判断与受损面积信息整体一致。",
+          "差异原因": [
+            "分类病种判断与受损面积信息未见明显矛盾。"
+          ],
+          "解释建议": "保持当前分类病种判断，同时持续跟踪病损面积变化。",
+          "索引说明": "分割头不参与病种判读，仅用于病损面积估计。"
+        },
+        "分类候选": [
+          {
+            "名称": "晚疫病",
+            "置信度": "92.1%"
+          },
+          {
+            "名称": "早疫病",
+            "置信度": "7.8%"
+          },
+          {
+            "名称": "白星病",
+            "置信度": "0.1%"
+          }
+        ],
+        "病斑面积明细": [
+          {
+            "区域": "病斑区域3",
+            "病损面积占叶片比例": "44.5%",
+            "病损像素": 19006,
+            "平均概率": "94.8%"
+          }
+        ]
+      },
+      "top_diagnosis": {
+        "name": "晚疫病",
+        "confidence": "低"
+      },
+      "candidates": [
+        {
+          "name": "晚疫病",
+          "why_like": "当前视觉病种判断仍以整体分类为主，对“晚疫病”有一定倾向，但证据仍需补齐。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        },
+        {
+          "name": "晚疫病",
+          "why_like": "分类模型中“晚疫病”呈现较高类别倾向（约 92.1%），仅作候选参考。",
+          "why_unlike": "当前仅基于单张叶片图像，尚缺病种特异性证据，暂不足以确诊。"
+        }
+      ],
+      "actions": [
+        "暂停立即摘除并销毁病叶的操作，改为隔离观察。",
+        "仅对病株周围进行物理隔离，暂不进行预防性喷药。",
+        "优先执行证据收集步骤（如检查霉层、水浸状等），待确诊后再实施药剂处理。"
+      ],
+      "rescue_plan": [
+        {
+          "phase": "立即复核",
+          "objective": "先补充关键证据并确认结果冲突来源。",
+          "actions": [
+            "立即摘除并销毁病叶（带出田外深埋或烧毁），防止孢子扩散。",
+            "对病株周围 1 米范围内的健康叶片进行预防性喷药。",
+            "检查植株茎基部是否有褐色凹陷病斑，确认病害是否已侵入维管束。"
+          ],
+          "rationale": [
+            "当前存在结果冲突，先补证据比直接升级处理更稳妥。"
+          ],
+          "risk_level": "low"
+        },
+        {
+          "phase": "保守观察",
+          "objective": "在未确证前降低误治风险。",
+          "actions": [
+            "保持通风、隔离重症叶片，并持续复拍观察病斑变化。"
+          ],
+          "rationale": [
+            "证据不足时优先采用低风险、可逆的管理措施。"
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "evidence_sufficiency": "当前已可形成首位疑似判断，后续仍需结合复查证据持续校正。",
+      "confidence_statement": "当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_outline": [
+        "病例摘要：可见征象与受害范围，不写确诊口径。",
+        "诊断判断与置信说明：首位疑似「晚疫病」、模型倾向、支持/鉴别与知识库摘要（若有）。",
+        "复查与补证建议：优先补什么、有何帮助、可怎么做。",
+        "救治建议与实施路径：分步动作、观察与升级条件（证据不足不写具体药剂配方）。",
+        "风险边界、预后与复查：禁忌、恶化信号与复查节点。"
+      ],
+      "report_summary": "主诊断倾向：晚疫病（置信说明：低） 当前图像病种判断更偏向“晚疫病”，主要依据来自分类头；分类置信度为 92.1%，病损面积约占叶片面积 44.5%。分割结果仅用于面积评估，不参与病种类型判读。 当前图像整体更偏向“晚疫病”，当前可信度约为 92.1%，病损面积约占叶片面积 44.5%。 分类病种判断与受损面积信息整体一致。 当前更倾向于“晚疫病”，但证据冲突较明显，结论仅适合作为待复核的倾向性诊断。",
+      "report_excerpt": "# 农业救治报告\n\n## 病例摘要\n本节只归纳当前图像能直接支撑的事实：叶片可见的病斑形态、颜色与组织变化、分布位置以及模型给出的受害范围估计。这些材料用于描述「现场看到了什么」，并不等同于已完成病名确诊。在单张图像条件下，结论强度天然受限；后续章节会在补证前提下讨论排序与处置。读者应把本节理解为观察起点，而非治疗决策终点。\n\n## 诊断判断与置信说明\n**这种病田间一般特征** 草莓灰霉病病原为卵菌，在潮湿环境下极易通过气流或雨水传播。病斑多始于叶缘或叶尖，初期呈水浸状暗绿色，随后迅速扩大并转为褐色坏死。随着病情发展，病健交界处常出现清晰的界限，且叶片易受重力影响而萎蔫下垂。若田间环境持续高湿且通风不良，病斑表面极可能在叶背出现白色霉层，这是该病害极具诊断价值的微观特征。若病斑边缘呈现模糊的水渍状并向健康组织快速扩散，则进一步佐证了病原的侵染活性。**当前影像为何更像晚疫病** 依据图像分析，病损面积约占单叶 44.5%，且坏死区域主要分布于叶缘，这与晚疫病典型的侵染路径高度吻合。模型对“晚疫病”的类别倾向约为 92.1%，表明视觉特征与该病害的统计规律匹配度较高。尽管图像中未直接观察到白色霉层，但病斑形态的不规则性及坏死范围的广泛性，使其在现有证据链中权重最高。需明确的是，此分类分数仅代表照片特征更像哪一类，并不等同于田间病理确诊。**需与何病区分及补证方向** 鉴别诊断需重点关注早疫病与细菌性叶斑病，前者常具同心轮纹，后者多伴黄色晕圈或油渍状光泽。当前图像缺乏轮纹特征且未见明显黄色晕圈，故这两类病害的可能性相对较低。若叶背近景复查中未发现白色霉层或菌丝体，则“晚疫病”的排序可能需下调，转而考虑其他真菌性病害。若病斑周围出现明显黄色晕圈，则应优先考虑细菌性病害的可能性。**结论置信度说明** 当前诊断结论受限于单张图像的视角局限，证据强度属于倾向性判断而非绝对定论。视觉分类对“晚疫病”呈极强倾向，但结论仍受单张图像局限，建议以复查校准强度。后续处置需结合田间实际环境参数，若 48 小时内病斑外扩幅度小于 5% 且无新发病斑，可维持当前观察策略。若出现连续两次复查同向变化，则需调整排序与处置强度。\n\n## 复查与补证建议\n优先安排可复核动作：叶背近景、整株分布、同叶位时间序列，通常最能帮助区分相似选项。把每项补证写成「若观察到某结果，判断可如何前移或回调」，避免只罗列「尚缺」而不给路径。必要时再考虑镜检或送检，并与田间记录对齐。在材料受限时本节为系统兜底稿，请结合复查与专家意见替换为正式叙述。\n\n## 救治建议与实施路径\n立即摘除并销毁病叶，将病叶带出田外深埋或烧毁，阻断孢子扩散途径。对病株周围 1 米范围内的健康叶片实施预防性喷药，覆盖潜在侵染点。检查植株茎基部是否有褐色凹陷病斑，确认病害是否已侵入维管束系统。若叶背出现白色霉层或菌丝体，则需立即升级复核",
+      "safety_passed": false,
+      "timestamp": "2026-03-30T02:16:52.218065"
+    }
+  ],
+  "report_meta": {
+    "multi_agent_meta": {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "latency_ms": 18676,
+      "request_id": "9dd19368-7f86-4dbf-b129-a38b921399e7,9be62eea-89df-438c-886a-ece815400b86,34750519-784a-4e9b-a6d6-1f8d4c31564f,2579cddf-338a-483b-b6a6-5941f5350a78,2357ba2e-2470-4a6c-9ed4-19acc8c3b623",
+      "is_real_output": true,
+      "used_fallback": true,
+      "output_mode": "plain_markdown_section"
+    },
+    "baseline_meta": {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "latency_ms": 31088,
+      "request_id": "008a6f5d-121e-4ea1-a173-d334d6c26f43",
+      "is_real_output": true,
+      "used_fallback": false
+    },
+    "quality_issues": [
+      {
+        "source": "baseline_markdown",
+        "code": "REPORT_QUALITY_VALIDATION_FAILED",
+        "message": "缺少必填章节：风险边界、预后与复查"
+      }
+    ]
+  }
+}

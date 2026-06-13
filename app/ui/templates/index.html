@@ -39,9 +39,13 @@
       <div class="app-body">
         <header class="top-bar">
           <div class="top-bar-left">
-            <span class="top-system">OminiBerry草莓病害诊断与防治工作台</span>
-            <span class="top-sep">/</span>
-            <span class="top-page">决策台</span>
+            <div class="top-heading">
+              <span class="top-system">OminiBerry草莓病害诊断与防治工作台</span>
+              <div class="top-breadcrumb">
+                <span class="top-sep">Plant Health Console</span>
+                <span class="top-page">决策台</span>
+              </div>
+            </div>
           </div>
           <div class="top-bar-center">
             <div id="top-run-indicator" class="run-indicator idle">
@@ -62,7 +66,7 @@
             <div class="panel-hero">
               <div class="hero-pattern"></div>
               <div class="hero-content">
-                <div class="hero-kicker">证据驱动救治决策流程</div>
+                <div class="hero-kicker">Evidence-driven diagnosis workflow</div>
                 <h1>从叶片症状输入到救治报告生成的会诊流程</h1>
                 <p>你可以点击每个节点查看角色职责、输入证据、补证任务和阶段输出，按实际决策步骤追踪整条流程。</p>
                 <div class="hero-meta">
@@ -72,8 +76,21 @@
               </div>
             </div>
 
+            <div class="workspace-summary">
+              <div class="summary-card">
+                <span class="summary-label">当前模式</span>
+                <strong>图像直达诊断</strong>
+                <span class="summary-note">上传图片后自动完成视觉理解、会诊推理与报告生成。</span>
+              </div>
+              <div class="summary-card">
+                <span class="summary-label">输出结果</span>
+                <strong>流程 + 报告</strong>
+                <span class="summary-note">既能看诊断路径，也能直接查看最终建议。</span>
+              </div>
+            </div>
+
             <div class="expert-team">
-              <span class="expert-team-label">当前角色风格</span>
+              <span class="expert-team-label">专家角色面板</span>
               <div class="expert-avatars">
                 <div class="expert-avatar ea-human" data-agent="human" title="人类输入"></div>
                 <div class="expert-avatar ea-teal" data-agent="diagnosis_evidence_officer" title="病理推理专家"></div>
@@ -86,6 +103,8 @@
             <form id="run-form" class="input-form">
               <input id="problem_name" name="problem_name" type="hidden" value="草莓病害图像诊断报告" />
               <input id="case_text" name="case_text" type="hidden" value="" />
+
+              <div class="form-section-title">任务配置</div>
 
               <div class="field field-note">
                 <label>诊断模式</label>
@@ -141,6 +160,14 @@
           </aside>
 
           <main class="output-panel glass">
+            <div class="board-intro">
+              <div class="board-intro-copy">
+                <span class="board-intro-kicker">Decision Board</span>
+                <h2>诊断过程与输出结果在这里统一呈现</h2>
+                <p>左侧配置任务，中央查看流程白板与最终报告，保留全部功能但让信息层次更清楚。</p>
+              </div>
+            </div>
+
             <div class="view-tabs">
               <button id="dialogue-view-btn" class="view-tab active" type="button">
                 <span class="tab-icon">💬</span>

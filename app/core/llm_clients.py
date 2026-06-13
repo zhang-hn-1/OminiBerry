@@ -678,12 +678,18 @@ BASELINE_ROUTE_KEY = "baseline_single_llm"
 DEFAULT_AGENT_ROUTE_KEYS = [*MULTI_AGENT_ROUTE_KEYS, BASELINE_ROUTE_KEY]
 
 
+def _is_openai_compatible_provider(provider: str) -> bool:
+    return provider in {"openai", "dnxapi"}
+
+
 def _default_multi_agent_route(settings: Settings) -> LLMRoute:
     provider = settings.multiagent_llm.strip().lower() or "openai"
     if provider == "local_transformers":
         return LLMRoute(provider=provider, model=settings.local_llm_model_dir)
     if provider == "ollama":
         return LLMRoute(provider=provider, model=settings.ollama_model)
+    if provider == "dnxapi":
+        return LLMRoute(provider="dnxapi", model=settings.dnxapi_model, client_name="dnxapi")
     return LLMRoute(
         provider="openai",
         model=settings.multiagent_openai_model,
@@ -692,6 +698,8 @@ def _default_multi_agent_route(settings: Settings) -> LLMRoute:
 
 
 def _default_baseline_route(settings: Settings) -> LLMRoute:
+    if settings.baseline_llm_provider == "dnxapi":
+        return LLMRoute(provider="dnxapi", model=settings.dnxapi_model, client_name="dnxapi")
     return LLMRoute(provider="openai", model=settings.openai_model, client_name="openai")
 
 
@@ -731,7 +739,7 @@ def build_agent_model_routing(settings: Settings) -> dict[str, LLMRoute]:
     primary = (settings.multiagent_llm or "").strip().lower() or "openai"
     use_local_expert_paths = primary == "local_transformers"
     # 仅当整系统主路径为 local_transformers 时，才启用本地目录与 JSON 中的 local_transformers 专家路由。
-    # openai / ollama 主路径下统一走默认 API，避免 .env 里残留的微调目录把个别专家拉回本地。
+    # openai / dnxapi / ollama 主路径下统一走默认 API，避免 .env 里残留的微调目录把个别专家拉回本地。
     use_local_expert_paths = primary == "local_transformers"
 
     routes: dict[str, LLMRoute] = {name: multi_agent_default_route for name in MULTI_AGENT_ROUTE_KEYS}
@@ -765,6 +773,13 @@ def build_agent_model_routing(settings: Settings) -> dict[str, LLMRoute]:
                 adapter_model=route.adapter_model,
                 client_name="multiagent_openai",
             )
+        elif route.provider == "dnxapi":
+            routes[key] = LLMRoute(
+                provider="dnxapi",
+                model=route.model,
+                adapter_model=route.adapter_model,
+                client_name="dnxapi",
+            )
     berry_route = routes.get("berry_qa_expert")
     if berry_route is not None:
         routes["berry_qa_expert"] = LLMRoute(
@@ -775,14 +790,23 @@ def build_agent_model_routing(settings: Settings) -> dict[str, LLMRoute]:
         )
     # 基线只走 baseline 专用客户端（openai），模型可来自 JSON 覆盖，缺省用 BASELINE_OPENAI_* / OPENAI_*
     bl = routes.get(BASELINE_ROUTE_KEY)
-    if bl is not None and bl.provider == "openai":
-        model = (bl.model or "").strip() or settings.openai_model
-        routes[BASELINE_ROUTE_KEY] = LLMRoute(
-            provider="openai",
-            model=model,
-            adapter_model="",
-            client_name="openai",
-        )
+    if bl is not None and _is_openai_compatible_provider(bl.provider):
+        if bl.provider == "dnxapi":
+            model = (bl.model or "").strip() or settings.dnxapi_model
+            routes[BASELINE_ROUTE_KEY] = LLMRoute(
+                provider="dnxapi",
+                model=model,
+                adapter_model="",
+                client_name="dnxapi",
+            )
+        else:
+            model = (bl.model or "").strip() or settings.openai_model
+            routes[BASELINE_ROUTE_KEY] = LLMRoute(
+                provider="openai",
+                model=model,
+                adapter_model="",
+                client_name="openai",
+            )
     else:
         routes[BASELINE_ROUTE_KEY] = _default_baseline_route(settings)
     return routes
@@ -797,6 +821,13 @@ def build_llm_client(settings: Settings) -> RoutedLLMClient:
                 "须配置 MULTIAGENT_OPENAI_API_KEY（或兼容填写 OPENAI_API_KEY）。"
                 "基线单模型仅使用 BASELINE_OPENAI_* / OPENAI_*，不会自动作为多智能体 API 凭据。"
             )
+    if multi_mode == "dnxapi":
+        if not settings.dnxapi_api_key.strip():
+            raise RuntimeError("MULTIAGENT_LLM=dnxapi 时，须配置 DNXAPI_API_KEY。")
+        if not settings.dnxapi_base_url.strip():
+            raise RuntimeError("MULTIAGENT_LLM=dnxapi 时，须配置 DNXAPI_BASE_URL。")
+        if not settings.dnxapi_model.strip():
+            raise RuntimeError("MULTIAGENT_LLM=dnxapi 时，须配置 DNXAPI_MODEL。")
 
     providers: dict[str, BaseLLMClient] = {
         "openai": OpenAICompatibleClient(
@@ -812,6 +843,13 @@ def build_llm_client(settings: Settings) -> RoutedLLMClient:
             model=settings.multiagent_openai_model,
             trust_env=settings.multiagent_openai_trust_env,
             api_key_env_name="MULTIAGENT_OPENAI_API_KEY",
+        ),
+        "dnxapi": OpenAICompatibleClient(
+            base_url=settings.dnxapi_base_url,
+            api_key=settings.dnxapi_api_key,
+            model=settings.dnxapi_model,
+            trust_env=settings.dnxapi_trust_env,
+            api_key_env_name="DNXAPI_API_KEY",
         ),
         "local_transformers": LocalTransformersClient(
             default_model_dir=settings.local_llm_model_dir,

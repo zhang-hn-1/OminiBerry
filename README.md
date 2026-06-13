@@ -52,3 +52,48 @@ ENABLE_LOCAL_QWEN3_VL=false
 - 当前仓库已经调整为草莓版本，并默认采用无 DINO 运行模式。
 - 若后续需要接入真实视觉模型，请保证模型输出类别顺序与 `classes.txt` 保持一致。
 - 若本地 Ollama 模型响应过慢，四个专家可能退化为 fallback 输出，建议更换更稳定的本地模型。
+
+## Quick Start
+
+1. Install dependencies:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+2. Configure `.env`:
+
+- `MULTIAGENT_LLM=openai`
+- `BASELINE_OPENAI_API_KEY=...`
+- `MULTIAGENT_OPENAI_API_KEY=...` optional, falls back to the baseline key if omitted
+- `ENABLE_LOCAL_QWEN3_VL=false`
+- `ENABLE_LOCAL_DINOV3=false`
+
+DNXAPI is also supported as an OpenAI-compatible provider:
+
+- `MULTIAGENT_LLM=dnxapi`
+- `BASELINE_LLM_PROVIDER=dnxapi` optional, if you want the baseline report path to use DNXAPI too
+- `DNXAPI_BASE_URL=...`
+- `DNXAPI_API_KEY=...`
+- `DNXAPI_MODEL=...`
+
+3. Start the API server:
+
+```powershell
+python scripts/run_api.py
+```
+
+4. Open the UI:
+
+- `http://127.0.0.1:8000`
+
+5. Call the diagnosis API:
+
+```powershell
+curl -X POST "http://127.0.0.1:8000/api/v1/diagnosis/run" `
+  -F "problem_name=strawberry diagnosis" `
+  -F "case_text=leaf spots and mildew" `
+  -F "stage=initial" `
+  -F "n_rounds=2" `
+  -F "image=@asserts/output.png"
+```

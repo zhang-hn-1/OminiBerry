@@ -46,6 +46,32 @@ def _first_nonempty_env(*names: str) -> str:
     return ""
 
 
+def _resolve_multiagent_openai_base_url(default_openai_base: str) -> str:
+    value = _first_nonempty_env(
+        "MULTIAGENT_OPENAI_BASE_URL",
+        "OPENAI_BASE_URL",
+        "BASELINE_OPENAI_BASE_URL",
+    )
+    return value or default_openai_base
+
+
+def _resolve_multiagent_openai_api_key() -> str:
+    return _first_nonempty_env(
+        "MULTIAGENT_OPENAI_API_KEY",
+        "OPENAI_API_KEY",
+        "BASELINE_OPENAI_API_KEY",
+    )
+
+
+def _resolve_multiagent_openai_model() -> str:
+    value = _first_nonempty_env(
+        "MULTIAGENT_OPENAI_MODEL",
+        "OPENAI_MODEL",
+        "BASELINE_OPENAI_MODEL",
+    )
+    return value or "gpt-4o-mini"
+
+
 @dataclass(frozen=True)
 class Settings:
     app_host: str
@@ -55,8 +81,9 @@ class Settings:
     llm_fallback_provider: str
     strict_real_output: bool
 
-    # 多智能体主路径：openai | local_transformers | ollama；未设时回退 LLM_PRIMARY_PROVIDER
+    # 多智能体主路径：openai | dnxapi | local_transformers | ollama；未设时回退 LLM_PRIMARY_PROVIDER
     multiagent_llm: str
+    baseline_llm_provider: str
 
     # 仅 baseline_single_llm（client 名 openai）。优先读 BASELINE_OPENAI_*，未设时兼容旧版 OPENAI_*
     openai_base_url: str
@@ -69,6 +96,12 @@ class Settings:
     multiagent_openai_api_key: str
     multiagent_openai_model: str
     multiagent_openai_trust_env: bool
+
+    # DNXAPI 采用 OpenAI-compatible 接入
+    dnxapi_base_url: str
+    dnxapi_api_key: str
+    dnxapi_model: str
+    dnxapi_trust_env: bool
 
     local_llm_model_dir: str
     local_llm_max_new_tokens: int
@@ -129,8 +162,9 @@ def get_settings() -> Settings:
     if not baseline_model:
         baseline_model = "gpt-4o-mini"
     # 多智能体 API 与基线 OPENAI_* / BASELINE_* 完全分离，禁止从 OPENAI_* 回退填充
-    ma_base = os.getenv("MULTIAGENT_OPENAI_BASE_URL", "").strip()
-    ma_key = os.getenv("MULTIAGENT_OPENAI_API_KEY", "").strip()
+    ma_base = _resolve_multiagent_openai_base_url(default_openai_base)
+    ma_key = _resolve_multiagent_openai_api_key()
+    ma_model = _resolve_multiagent_openai_model()
     return Settings(
         app_host=os.getenv("APP_HOST", "127.0.0.1"),
         app_port=_get_int("APP_PORT", 8000),
@@ -141,6 +175,7 @@ def get_settings() -> Settings:
             os.getenv("MULTIAGENT_LLM", "").strip().lower()
             or os.getenv("LLM_PRIMARY_PROVIDER", "openai").strip().lower()
         ),
+        baseline_llm_provider=os.getenv("BASELINE_LLM_PROVIDER", "openai").strip().lower(),
         openai_base_url=baseline_base,
         openai_api_key=_first_nonempty_env("BASELINE_OPENAI_API_KEY", "OPENAI_API_KEY"),
         openai_model=baseline_model,
@@ -151,8 +186,12 @@ def get_settings() -> Settings:
         ),
         multiagent_openai_base_url=ma_base,
         multiagent_openai_api_key=ma_key,
-        multiagent_openai_model=os.getenv("MULTIAGENT_OPENAI_MODEL", "gpt-4o-mini").strip(),
+        multiagent_openai_model=ma_model,
         multiagent_openai_trust_env=_get_bool("MULTIAGENT_OPENAI_TRUST_ENV", False),
+        dnxapi_base_url=os.getenv("DNXAPI_BASE_URL", "").strip(),
+        dnxapi_api_key=os.getenv("DNXAPI_API_KEY", "").strip(),
+        dnxapi_model=os.getenv("DNXAPI_MODEL", "").strip(),
+        dnxapi_trust_env=_get_bool("DNXAPI_TRUST_ENV", False),
         local_llm_model_dir=os.getenv("LOCAL_LLM_MODEL_DIR", "").strip(),
         local_llm_max_new_tokens=_get_int("LOCAL_LLM_MAX_NEW_TOKENS", 2048),
         local_llm_structured_max_new_tokens=_get_int("LOCAL_LLM_STRUCTURED_MAX_NEW_TOKENS", 768),

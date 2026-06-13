@@ -1,0 +1,46 @@
+{
+  "visual_summary": "BLIP识别到叶片病斑，主症状为颜色brown、组织状态necrosis，分布位置leaf_edge，模式clustered。",
+  "symptoms": {
+    "color": [
+      "褐变"
+    ],
+    "tissue_state": [
+      "坏死"
+    ],
+    "spot_shape": [
+      "同心轮纹"
+    ],
+    "boundary": [
+      "清晰",
+      "黄色晕圈"
+    ],
+    "distribution_position": [
+      "叶缘"
+    ],
+    "distribution_pattern": [
+      "簇状"
+    ],
+    "morph_change": [
+      "卷曲"
+    ],
+    "pest_cues": [
+      "无明显虫害线索"
+    ],
+    "co_signs": [
+      "湿度高",
+      "浇水过多"
+    ]
+  },
+  "numeric": {
+    "area_ratio": 0.12,
+    "severity_score": 0.534625
+  },
+  "confidence": 0.8225,
+  "ood_score": 0.25,
+  "followup_questions": [
+    "请复核以下不确定信息：光照反光影响边界判断"
+  ],
+  "evidence_refs": [
+    "image_evidence:pending"
+  ]
+}
