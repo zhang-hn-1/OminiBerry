@@ -21,7 +21,10 @@
       <nav class="nav-rail" aria-label="主导航">
         <div class="nav-logo" title="OminiBerry草莓病害诊断与防治工作台">🍓</div>
         <div class="nav-group">
-          <button class="nav-item active" data-page="diagnosis" title="决策台">
+          <button class="nav-item active" data-page="dashboard" title="数据大屏">
+            <span class="nav-icon">📊</span>
+          </button>
+          <button class="nav-item" data-page="diagnosis" title="决策台">
             <span class="nav-icon">🩺</span>
           </button>
           <button class="nav-item" data-page="runs" title="运行记录">
@@ -43,7 +46,7 @@
               <span class="top-system">OminiBerry草莓病害诊断与防治工作台</span>
               <div class="top-breadcrumb">
                 <span class="top-sep">Plant Health Console</span>
-                <span class="top-page">决策台</span>
+                <span class="top-page">数据大屏</span>
               </div>
             </div>
           </div>
@@ -183,7 +186,10 @@
               <section id="flow-board-view" class="flow-board-view">
                 <div class="flow-toolbar">
                   <div class="flow-toolbar-copy">
-                    <span class="flow-toolbar-title">救治决策流程图</span>
+                    <div class="flow-toolbar-top-row">
+                      <button class="back-dash-btn" data-nav="dashboard" type="button" title="返回数据大屏">‹ 返回大屏</button>
+                      <span class="flow-toolbar-title">救治决策流程图</span>
+                    </div>
                     <span class="flow-toolbar-text">用来查看全图。</span>
                   </div>
                   <div class="flow-toolbar-side">
@@ -228,9 +234,156 @@
           </main>
         </div>
 
+        <div id="page-dashboard" class="dash-page" style="display: flex">
+          <div class="dash-grid">
+            <div class="dash-panel hero-panel" data-nav="diagnosis">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-icon">🍓</div>
+                <div class="dash-panel-label">快速诊断入口</div>
+                <h2 class="dash-panel-title">草莓病害<br>智能诊断</h2>
+                <p class="dash-panel-desc">上传草莓叶片图片，AI 专家团队会诊，生成救治报告</p>
+                <div class="dash-panel-action">
+                  <span class="dash-cta">进入决策台 →</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel stats-panel">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-label">系统概览</div>
+                <div class="dash-stats-row">
+                  <div class="dash-stat">
+                    <span class="dash-stat-value" id="dash-total-runs">--</span>
+                    <span class="dash-stat-label">诊断运行</span>
+                  </div>
+                  <div class="dash-stat">
+                    <span class="dash-stat-value accent" id="dash-verified-cases">--</span>
+                    <span class="dash-stat-label">已核实病例</span>
+                  </div>
+                </div>
+                <div class="dash-stats-row">
+                  <div class="dash-stat">
+                    <span class="dash-stat-value soft" id="dash-unverified-cases">--</span>
+                    <span class="dash-stat-label">待核实病例</span>
+                  </div>
+                  <div class="dash-stat">
+                    <span class="dash-stat-value muted" id="dash-doc-count">--</span>
+                    <span class="dash-stat-label">知识文档</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel team-panel">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-label">专家团队就绪</div>
+                <div class="dash-expert-avatars">
+                  <div class="dash-avatar ea-human" title="人类输入">👤</div>
+                  <div class="dash-avatar ea-teal" title="病理推理专家">🔬</div>
+                  <div class="dash-avatar ea-violet" title="鉴别排除专家">🔍</div>
+                  <div class="dash-avatar ea-green" title="农艺环境专家">🌱</div>
+                  <div class="dash-avatar ea-rose" title="草莓防治专家">💊</div>
+                </div>
+                <p class="dash-panel-desc">5 位 AI 专家协同会诊，覆盖病理推理、鉴别排除、农艺环境与防治方案全流程</p>
+              </div>
+            </div>
+
+            <div class="dash-panel runs-panel" data-nav="runs">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-label">运行记录 <span class="dash-nav-hint">点击进入 →</span></div>
+                <div id="dash-recent-runs" class="dash-list-preview">
+                  <div class="dash-list-empty">加载中...</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel cases-panel" data-nav="cases">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-label">病例库 <span class="dash-nav-hint">点击进入 →</span></div>
+                <div class="dash-mini-stats">
+                  <div class="dash-mini-stat">
+                    <span class="dash-mini-val accent">✓</span>
+                    <span>已核实 <strong id="dash-cases-verified">--</strong></span>
+                  </div>
+                  <div class="dash-mini-stat">
+                    <span class="dash-mini-val muted">⏳</span>
+                    <span>待核实 <strong id="dash-cases-unverified">--</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel kb-panel" data-nav="kb">
+              <div class="dash-panel-border">
+                <span class="dash-corner dash-corner-tl"></span>
+                <span class="dash-corner dash-corner-tr"></span>
+                <span class="dash-corner dash-corner-bl"></span>
+                <span class="dash-corner dash-corner-br"></span>
+                <span class="dash-scan-line-top"></span>
+                <span class="dash-scan-line-bottom"></span>
+              </div>
+              <div class="dash-panel-inner">
+                <div class="dash-panel-label">知识库管理 <span class="dash-nav-hint">点击进入 →</span></div>
+                <div class="dash-mini-stats">
+                  <div class="dash-mini-stat">
+                    <span class="dash-mini-val soft">📄</span>
+                    <span>文档 <strong id="dash-kb-docs">--</strong></span>
+                  </div>
+                  <div class="dash-mini-stat">
+                    <span class="dash-mini-val accent">📊</span>
+                    <span>总条目 <strong id="dash-kb-total">--</strong></span>
+                  </div>
+                </div>
+                <p class="dash-panel-desc">上传知识文档，管理病例数据</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div id="page-runs" class="side-page glass" style="display: none">
           <div class="page-header">
             <div class="page-header-left">
+              <button class="back-dash-btn" data-nav="dashboard" type="button" title="返回数据大屏">‹ 返回大屏</button>
               <span class="page-icon">🗂️</span>
               <div>
                 <h2 class="page-title">运行记录</h2>
@@ -245,6 +398,7 @@
         <div id="page-cases" class="side-page glass" style="display: none">
           <div class="page-header">
             <div class="page-header-left">
+              <button class="back-dash-btn" data-nav="dashboard" type="button" title="返回数据大屏">‹ 返回大屏</button>
               <span class="page-icon">🧪</span>
               <div>
                 <h2 class="page-title">病例库</h2>
@@ -266,6 +420,7 @@
         <div id="page-kb" class="side-page glass" style="display: none">
           <div class="page-header">
             <div class="page-header-left">
+              <button class="back-dash-btn" data-nav="dashboard" type="button" title="返回数据大屏">‹ 返回大屏</button>
               <span class="page-icon">📚</span>
               <div>
                 <h2 class="page-title">知识库</h2>

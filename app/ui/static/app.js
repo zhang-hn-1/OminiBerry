@@ -29,6 +29,7 @@
     clearKbBtn: document.getElementById("clear-kb-btn"),
     kbTarget: document.getElementById("kb-target"),
     kbStatus: document.getElementById("kb-status"),
+    dashPage: document.getElementById("page-dashboard"),
     runsPage: document.getElementById("page-runs"),
     casesPage: document.getElementById("page-cases"),
     kbPage: document.getElementById("page-kb"),
@@ -54,6 +55,7 @@
   };
 
   const PAGE_TITLES = {
+    dashboard: "数据大屏",
     diagnosis: "决策台",
     runs: "运行记录",
     cases: "病例库",
@@ -238,7 +240,7 @@
   };
 
   const state = {
-    activePage: "diagnosis",
+    activePage: "dashboard",
     currentView: "dialogue",
     reportMode: "multi",
     runId: "",
@@ -2997,11 +2999,14 @@
     refs.topPage.textContent = PAGE_TITLES[page] || PAGE_TITLES.diagnosis;
 
     refs.workspace.style.display = page === "diagnosis" ? "flex" : "none";
+    refs.dashPage.style.display = page === "dashboard" ? "flex" : "none";
     refs.runsPage.style.display = page === "runs" ? "flex" : "none";
     refs.casesPage.style.display = page === "cases" ? "flex" : "none";
     refs.kbPage.style.display = page === "kb" ? "flex" : "none";
 
-    if (page === "runs") {
+    if (page === "dashboard") {
+      void loadDashboardData();
+    } else if (page === "runs") {
       void loadRunsList();
     } else if (page === "cases") {
       void loadCasesPage();
@@ -3100,6 +3105,71 @@
       });
       refs.runsList.append(row);
     }
+  }
+
+  function updateDashboardStats() {
+    var dashRuns = document.getElementById("dash-total-runs");
+    var dashVerified = document.getElementById("dash-verified-cases");
+    var dashUnverified = document.getElementById("dash-unverified-cases");
+    var dashDocCount = document.getElementById("dash-doc-count");
+    var dashCasesVerified = document.getElementById("dash-cases-verified");
+    var dashCasesUnverified = document.getElementById("dash-cases-unverified");
+    var dashKbDocs = document.getElementById("dash-kb-docs");
+    var dashKbTotal = document.getElementById("dash-kb-total");
+
+    if (dashVerified) dashVerified.textContent = state.casesData.total_verified;
+    if (dashUnverified) dashUnverified.textContent = state.casesData.total_unverified;
+    if (dashDocCount) dashDocCount.textContent = state.kbDocuments.length;
+    if (dashCasesVerified) dashCasesVerified.textContent = state.casesData.total_verified;
+    if (dashCasesUnverified) dashCasesUnverified.textContent = state.casesData.total_unverified;
+    if (dashKbDocs) dashKbDocs.textContent = state.kbDocuments.length;
+    if (dashKbTotal) dashKbTotal.textContent = state.casesData.total_verified + state.casesData.total_unverified + state.kbDocuments.length;
+  }
+
+  async function loadDashboardData() {
+    var dashRuns = document.getElementById("dash-total-runs");
+    var dashRecent = document.getElementById("dash-recent-runs");
+
+    try {
+      var response = await fetch("/api/v1/runs");
+      if (response.ok) {
+        var payload = await response.json();
+        var runs = payload.runs || [];
+        if (dashRuns) dashRuns.textContent = runs.length;
+
+        if (dashRecent) {
+          clearElement(dashRecent);
+          if (runs.length === 0) {
+            dashRecent.append(createEmptyStateMini("暂无运行记录"));
+          } else {
+            var shown = runs.slice(0, 5);
+            shown.forEach(function (r) {
+              var item = document.createElement("div");
+              item.className = "dash-list-item";
+              var runId = r.run_id || "";
+              item.innerHTML =
+                '<span class="dash-list-item-icon">📋</span>' +
+                '<span class="dash-list-item-body">' + escapeHtml(runId) + '</span>' +
+                '<span class="dash-list-item-time">' + escapeHtml(formatIsoTime(r.timestamp)) + '</span>';
+              dashRecent.append(item);
+            });
+          }
+        }
+      }
+    } catch (_) {
+      if (dashRuns) dashRuns.textContent = "--";
+    }
+
+    try { await loadCasesData(); } catch (_) {}
+    try { await loadKnowledgeDocuments(); } catch (_) {}
+    updateDashboardStats();
+  }
+
+  function createEmptyStateMini(text) {
+    var div = document.createElement("div");
+    div.className = "dash-list-empty";
+    div.textContent = text;
+    return div;
   }
 
   async function loadRunsList() {
@@ -3404,6 +3474,24 @@
   refs.navButtons.forEach((button) => {
     button.addEventListener("click", () => navigateTo(button.dataset.page || "diagnosis"));
   });
+
+  document.querySelectorAll(".dash-panel[data-nav]").forEach((panel) => {
+    panel.addEventListener("click", (event) => {
+      if (event.target.closest("button, input, select, textarea, .btn-primary, .btn-sm, .btn-danger")) {
+        return;
+      }
+      var target = panel.dataset.nav;
+      if (target) navigateTo(target);
+    });
+  });
+
+  document.querySelectorAll(".back-dash-btn[data-nav]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      var target = btn.dataset.nav;
+      if (target) navigateTo(target);
+    });
+  });
+
   refs.inspector?.addEventListener("scroll", () => {
     const currentNodeId = state.flow.selectedNodeId || state.flow.activeNodeId || "human";
     state.inspectorView.nodeId = currentNodeId;
@@ -3419,6 +3507,6 @@
   ensureBoardView();
   hydrateHeroAgentIcons();
   setView(state.currentView);
-  navigateTo("diagnosis");
+  navigateTo("dashboard");
   renderCurrentRun();
 })();
